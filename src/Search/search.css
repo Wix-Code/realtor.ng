@@ -1,0 +1,22 @@
+.searched {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.filtered {
+  margin-top: 50px;
+}
+
+.filtered h1 {
+  color: #e23c3c;
+}
+
+.filt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filt h1 {
+  text-align: center;
+}

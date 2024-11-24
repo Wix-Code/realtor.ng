@@ -1,0 +1,170 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.about_del {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 40px;
+}
+
+.about_write {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about_write p,
+.about_write ul li {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+  color: #666;
+  text-align: justify;
+}
+
+.team {
+  background: #f0f0f0;
+  padding: 60px 0px;
+}
+
+.team h1 {
+  color: #666;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.teams {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.team_pic {
+  height: 600px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  transition: all 200ms ease-in;
+}
+
+.team_names {
+  text-align: center;
+}
+
+
+.team_pic {
+  height: 550px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 400ms ease-in;
+}
+
+.team_del {
+  text-align: center;
+  position: absolute;
+  background: #0000004f;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  color: #ffffff;
+  padding: 20px;
+  transition: all 400ms ease-in;
+  width: 100%;
+  top: 0px;
+  z-index: 4;
+  right: -100%;
+  transform: translate3d(100%, 0, 0);
+}
+
+.team_del h4 {
+  font-size: 20px;
+}
+
+.team_del p {
+  font-size: 18px;
+  color: #f0f0f0;
+}
+
+.team_del span {
+  line-height: 30px;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+.team_pic:hover .team_del {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.team_names {
+  transform: translate3d(100%, 0, 0);
+  transition: all 400ms ease-in;
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #ffffff;
+}
+
+.team_pic:hover .team_names {
+  transform: translate3d(-100%, 0, 0);
+}
+
+
+@media screen and (max-width : 450px) {
+  .about_del {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 0px 10px;
+  }
+
+  .teams {
+    display: grid;
+    margin: 0px 10px;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+
+  .about_write h3 {
+    font-size: 18px;
+  }
+
+  .about_write p {
+    font-size: 14px;
+  }
+
+  .about_write ul li {
+    font-size: 14px;
+  }
+
+  .team_pic h4 {
+    font-size: 16px;
+  }
+
+  .team_pic p {
+    font-size: 14px;
+  }
+
+  .team_pic span {
+    font-size: 14px;
+  }
+
+  .team h1 {
+    font-size: 20px;
+  }
+}

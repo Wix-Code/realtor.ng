@@ -1,0 +1,473 @@
+.divide {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 40px;
+  gap: 20px;
+  display: flex;
+}
+
+
+/***** LEFT *****/
+.left {
+  flex: 2;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.check {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.for_sale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #f0f0f0;
+}
+
+.for_sale h2 {
+  color: #666;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.for_sale select {
+  border: 1px solid #f0f0f0;
+  font-size: 16px;
+  padding: 10px;
+  color: #666;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px;
+  gap: 20px;
+}
+
+.pagination button.active {
+  font-weight: bold;
+  padding: 10px 14px;
+  background-color: #e23c3c;
+  color: #f0f0f0;
+}
+
+.pagination button {
+  padding: 10px 14px;
+  background: #666;
+  color: #f0f0f0;
+  cursor: pointer;
+}
+
+/***** RIGHT *****/
+.right {
+  flex: 1;
+  background: #ffffff;
+}
+
+.advance {
+  border: 1px solid #f0f0f0;
+}
+
+.advan {
+  background: #f0f0f0;
+  padding: 15px 10px;
+  display: flex;
+}
+
+.advan h2 {
+  font-weight: 500;
+  font-size: 20px;
+  color: #666;
+}
+
+form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inp {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inp input,
+.inp select {
+  border: 1px solid #f0f0f0;
+  padding: 10px;
+  font-size: 17px;
+}
+
+.inp input::placeholder {
+  font-size: 17px;
+  color: #666;
+}
+
+.right_input {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.right_select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right_select input {
+  border: 1px solid #f0f0f0;
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  color: #666;
+}
+
+.right_input select {
+  border: 1px solid #f0f0f0;
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  color: #666;
+}
+
+form label {
+  font-size: 17px;
+  color: #666;
+}
+
+form button {
+  padding: 10px;
+  background: #e23c3c;
+  color: #ffffff;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+form button:hover {
+  background: #d82626;
+}
+
+/***** ITEMCARD *****/
+
+.left_contain {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 20px;
+  display: flex;
+  background: #ffffff;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.left_del {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.delete {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.delete button {
+  width: 30px;
+  font-size: 18px;
+  background: #e23c3c;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.5s;
+}
+
+.delete button:hover {
+  color: #ffffff;
+  background: #d82626;
+}
+
+.left_contain .p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #666;
+}
+
+.left_container {
+  display: flex;
+  gap: 20px;
+}
+
+.left_img {
+  position: relative;
+  cursor: pointer;
+}
+
+.left_img img {
+  width: 220px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item_image {
+  padding: 8px;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  color: #ffffff;
+  background: #00000069;
+}
+
+.item_image p {
+  font-size: 14px;
+}
+
+.left_details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.left_details h4 {
+  font-size: 18px;
+  color: #e23c3c;
+}
+
+.item h2 {
+  font-size: 22px;
+  color: #e23c3c;
+}
+
+.left_details p {
+  font-size: 16px;
+  color: #666;
+}
+
+.item_loc {
+  display: flex;
+  color: #474747;
+  align-items: center;
+  gap: 10px;
+}
+
+.item_loc h4 {
+  font-size: 18px;
+  color: #474747;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left_details button {
+  max-width: fit-content;
+  text-decoration: underline;
+  color: #e23c3c;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.left_details hr {
+  width: 100%;
+  height: 1px;
+  background: #f0f0f0;
+}
+
+.item_no {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #666;
+}
+
+.item_no span {
+  font-size: 15px;
+}
+
+.item_ph {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 17px;
+}
+
+.furnish {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.types {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.types h4 {
+  color: #474747;
+}
+
+
+@media screen and (max-width : 500px) {
+  .left {
+    margin: 0px 10px;
+  }
+
+  .divide {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 0px 20px;
+  }
+
+  .for_sale h2 {
+    font-size: 16px;
+  }
+
+  .furnish h4,
+  .types h4,
+  .item h2 {
+    font-size: 16px;
+  }
+
+  .item_no span,
+  .item_ph h5 {
+    font-size: 13px;
+  }
+
+  .for_sale select {
+    font-size: 13px;
+  }
+
+  .left_details p,
+  .left_details button {
+    font-size: 13px;
+  }
+
+  .left_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .left_img {
+    width: 100%;
+  }
+
+  .left_del .p {
+    font-size: 16px;
+  }
+
+  .left_img img {
+    width: 100%;
+  }
+
+  .right {
+    margin: 0px 10px;
+  }
+}
+
+@media screen and (min-width : 501px) and (max-width : 700px) {
+  .left {
+    margin: 0px 10px;
+  }
+
+  .divide {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 0px 20px;
+  }
+
+  .for_sale h2 {
+    font-size: 16px;
+  }
+
+  .furnish h4,
+  .types h4,
+  .item h2 {
+    font-size: 16px;
+  }
+
+  .item_no span,
+  .item_ph h5 {
+    font-size: 13px;
+  }
+
+  .for_sale select {
+    font-size: 13px;
+  }
+
+  .left_details p,
+  .left_details button {
+    font-size: 13px;
+  }
+
+  .left_container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .left_img {
+    width: 100%;
+  }
+
+  .left_del .p {
+    font-size: 16px;
+  }
+
+  .left_img img {
+    width: 100%;
+  }
+
+  .right {
+    margin: 0px 10px;
+  }
+}
+
+@media screen and (min-width : 701px) and (max-width : 900px) {
+  .left {
+    padding: 0px 10px;
+  }
+
+  .divide {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right {
+    padding: 0px 10px;
+  }
+}
+
+@media screen and (min-width : 901px) and (max-width : 1199px) {
+  .left {
+    padding-left: 10px;
+  }
+
+  .right {
+    padding-right: 10px;
+  }
+}

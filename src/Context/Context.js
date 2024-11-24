@@ -1,0 +1,187 @@
+import { createContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from 'axios'
+
+
+export const storeContext = createContext(null)
+
+
+const Context = (props) => {
+
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  console.log(error, "login error")
+
+  const [userDetails, setUserDetails] = useState({
+    password: '',
+    email: '',
+  })
+
+  const [filter, setFilter] = useState({
+    bathroom: "",
+    bedroom: "",
+    cat: "",
+    location: "",
+    type: "",
+    furnishing: "",
+  })
+
+  const [data, setData] = useState([])
+  const [sort, setSort] = useState("")
+  const [search, setSearch] = useState("")
+
+  const [post, setPost] = useState(null)
+  //const { id } = useParams()
+
+  //const user = JSON.parse(localStorage.getItem('user')) || null
+  //const data = user?.info
+
+
+  // useEffect(() => {
+  const fetchData = async (id) => {
+    try {
+      const res = await axios.get(`http://localhost:5000/api/post/single/${id}`, {
+        withCredentials: false
+      })
+      setPost(res.data.posts)
+      console.log(res.data.posts)
+      console.log(res.data.posts.userId.username)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  //fetchData()
+  //}, [id])
+
+  console.log(post?.price, "navbar post")
+
+
+  const change = (e) => {
+    setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
+  }
+  const submit = async (e) => {
+    e.preventDefault()
+
+    try {
+      setLoading(true)
+      const response = await axios.post('http://localhost:5000/api/auth/login', userDetails, { withCredentials: true })
+      console.log("Api error", response.data)
+      /*navigate('/')
+      localStorage.setItem('user', JSON.stringify(response.data))
+      console.log(response.data)
+      if (response.data.success === false) {
+        setError(response.data.message)
+      }*/
+      if (response.data.success) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+        navigate('/'); // Navigate only on success
+      } else {
+        // Handle API-level failure
+        setError(response.data.message || "An unknown error occurred");
+        console.log(response.data.message)
+        alert("unkniwn error")
+      }
+      //setLoading(false)
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+    }
+  }
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/post/create?location=${search}&sort=${sort}`, {
+          withCredentials: false,
+        })
+        setData(res.data.posts)
+        //console.log(res.data.posts)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchData()
+  }, [sort, search])
+
+  console.log(data)
+
+
+  const searchProperty = async (e) => {
+    e.preventDefault()
+    try {
+
+      const queryParams = new URLSearchParams(
+        Object.entries(search).filter(([_, value]) => value)
+      ).toString()
+
+      const res = await axios.get(`http://localhost:5000/api/post/create?location=${search}`, {
+        withCredentials: false,
+      })
+      setData(res.data.posts)
+      if (res.data.posts) {
+        navigate(`/search?${queryParams}`)
+      } else {
+        console.log("No property found")
+      }
+      console.log(res.data.posts)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const searchFilter = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+
+      const queryParams = new URLSearchParams(
+        Object.entries(filter).filter(([_, value]) => value)
+      ).toString()
+
+      const res = await axios.get(`http://localhost:5000/api/post/create?${queryParams}`, {
+        withCredentials: false,
+      })
+
+      console.log(queryParams)
+      setData(res.data.posts)
+      if (res.data.posts && res.data.posts.length > 0) {
+        navigate(`/search?${queryParams}`)
+      } else {
+        console.log("No property found")
+      }
+      setFilter({
+        bathroom: "",
+        bedroom: "",
+        cat: "",
+        location: "",
+        type: "",
+        furnishing: "",
+      });
+      setLoading(false)
+      console.log(res.data.posts)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const setChangeFilter = (e) => {
+    setFilter((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const values = {
+    change, submit, loading, sort, data, setSort, search, setSearch, searchProperty, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData
+  }
+
+  return (
+    <storeContext.Provider value={values}>
+      {props.children}
+    </storeContext.Provider>
+  )
+}
+
+export default Context

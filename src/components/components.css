@@ -1,0 +1,631 @@
+.hero {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.384), rgba(0, 0, 0, 0.678)), url('./hotel2.jpg');
+  height: 80vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero h1 {
+  color: #f0f0f0;
+  font-weight: 400;
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.search input {
+  width: 100%;
+  background: #ffffff;
+  padding: 20px;
+  font-size: 17px;
+  border-radius: 2px;
+  color: #666;
+}
+
+.search input::placeholder {
+  font-size: 17px;
+  color: #666;
+}
+
+.hero_btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero_btn button {
+  background: #e23c3c;
+  color: #ffffff;
+  width: fit-content;
+  padding: 12px 26px;
+  border-radius: 2px;
+  font-size: 18px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.hero_btn button:hover {
+  background: #e62828;
+}
+
+
+
+/**** COMPANY ****/
+.company {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.company h3 {
+  text-align: center;
+  font-size: 22px;
+  color: #666;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.company_logo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.company_logo img {
+  width: 300px;
+}
+
+/***** LATEST *****/
+
+.latests {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.latest_discover h1 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #666;
+}
+
+.latest_discover p {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.late {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.latest_contain {
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.latest_contain h4 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #666;
+}
+
+.late_con {
+  display: flex;
+  gap: 10px;
+}
+
+.late_img {
+  flex: 1;
+}
+
+.late_desc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.late_desc hr {
+  width: 100%;
+  height: 1px;
+  background: #f0f0f0;
+}
+
+.late_desc h2 {
+  font-size: 18px;
+  color: #e23c3c;
+}
+
+.late_desc h3 {
+  font-size: 22px;
+  color: #e23c3c;
+}
+
+.late_desc p {
+  font-size: 16px;
+  color: #666;
+}
+
+.late_desc h2 {
+  text-transform: capitalize;
+}
+
+.late_img img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+.late_icon {
+  display: flex;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lat_icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  color: #666;
+}
+
+.lat_icons span {
+  font-size: 17px;
+}
+
+.bed {
+  font-size: 20px;
+}
+
+/**** HOMEABOUT ****/
+
+.homeabout {
+  background: #f0f0f0;
+  padding: 40px 0px;
+  border-top: 1px solid #d1d1d1;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.homeabouts {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.homeabout h3 {
+  font-weight: 500;
+  color: #666;
+}
+
+.homeabout p {
+  font-size: 17px;
+  line-height: 25px;
+  color: #363636;
+}
+
+.home_num {
+  display: flex;
+  gap: 80px;
+  text-align: center;
+  justify-content: center;
+}
+
+.home_numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home_num h1 {
+  font-size: 46px;
+  color: #666;
+}
+
+.home_num h3 {
+  text-transform: uppercase;
+}
+
+
+/**** GOOGLE ****/
+.google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.google h1 {
+  font-size: 22px;
+  color: #666;
+  font-weight: 400;
+}
+
+.google h4 {
+  font-size: 18px;
+  color: #666;
+  font-weight: 400;
+}
+
+.google h4 span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #363636;
+}
+
+.google img {
+  margin-top: 20px;
+}
+
+
+
+@media screen and (max-width : 500px) {
+
+  .search {
+    width: 100%;
+    padding: 0px 30px;
+  }
+
+  .hero h1 {
+    font-size: 20px;
+  }
+
+  .search input,
+  .search input::placeholder {
+    font-size: 14px;
+  }
+
+  .hero_btn button {
+    font-size: 14px;
+  }
+
+  .company h3 {
+    font-size: 18px;
+  }
+
+  .company_logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .company_logo img {
+    width: 100px;
+  }
+
+  .latest {
+    margin: 0px 20px;
+  }
+
+  .late_desc p {
+    text-align: justify;
+    font-size: 13px;
+  }
+
+
+
+  .lat_icons span {
+    font-size: 12px;
+  }
+
+  .late {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+
+  .latest_contain h4,
+  .late_desc h2,
+  .late_desc h3 {
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+
+  .late_con {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .google {
+    margin: 0px 20px;
+  }
+
+  .google h1 {
+    font-size: 20px;
+  }
+
+  .google h4 {
+    font-size: 13px;
+  }
+
+  .google h4 span {
+    font-size: 13px;
+  }
+
+  .google img {
+    width: 150px;
+  }
+
+  .homeabouts {
+    margin: 0px 20px;
+  }
+
+  .homeabouts h3 {
+    font-size: 16px;
+  }
+
+  .homeabouts p {
+    font-size: 13px;
+  }
+
+  .home_numbers h1 {
+    font-size: 20px;
+  }
+
+  .home_numbers h3 {
+    font-size: 16px;
+  }
+
+  .home_num {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width : 501px) and (max-width : 700px) {
+
+  .search {
+    width: 100%;
+    padding: 0px 30px;
+  }
+
+  .hero h1 {
+    font-size: 20px;
+  }
+
+  .search input,
+  .search input::placeholder {
+    font-size: 14px;
+  }
+
+  .hero_btn button {
+    font-size: 14px;
+  }
+
+  .company h3 {
+    font-size: 18px;
+  }
+
+  .company_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .company_logo img {
+    width: 100px;
+  }
+
+  .latest {
+    margin: 0px 20px;
+  }
+
+  .latest_contain h4,
+  .late_desc h2,
+  .late_desc h3 {
+    font-size: 16px;
+  }
+
+  .late_img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .late {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .late_desc p {
+    text-align: justify;
+    font-size: 13px;
+  }
+
+  .late_con {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lat_icons span {
+    font-size: 12px;
+  }
+
+  .google {
+    margin: 0px 20px;
+  }
+
+  .google h1 {
+    font-size: 20px;
+  }
+
+  .google h4 {
+    font-size: 16px;
+  }
+
+  .google img {
+    width: 150px;
+  }
+
+  .homeabouts {
+    margin: 0px 20px;
+  }
+
+  .homeabouts h3 {
+    font-size: 16px;
+  }
+
+  .homeabouts p {
+    font-size: 14px;
+  }
+
+  .home_numbers h1 {
+    font-size: 20px;
+  }
+
+  .home_numbers h3 {
+    font-size: 16px;
+  }
+
+  .home_num {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width : 701px) and (max-width : 1199px) {
+  .search {
+    width: 100%;
+    padding: 0px 40px;
+  }
+
+  .hero {
+    height: 50vh;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .search input,
+  .search input::placeholder {
+    font-size: 16px;
+  }
+
+  .hero_btn button {
+    font-size: 16px;
+  }
+
+  .company h3 {
+    font-size: 20px;
+  }
+
+  .company_logo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .company_logo img {
+    width: 200px;
+  }
+
+  .latest {
+    margin: 0px 60px;
+  }
+
+  .latest_contain h4,
+  .late_desc h2,
+  .late_desc h3 {
+    font-size: 18px;
+  }
+
+  .late_img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .late {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .late_desc p {
+    text-align: justify;
+    font-size: 15px;
+  }
+
+  .late_con {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lat_icons span {
+    font-size: 14px;
+  }
+
+  .google {
+    margin: 0px 60px;
+  }
+
+  .google h1 {
+    font-size: 23px;
+  }
+
+  .google h4 {
+    font-size: 18px;
+  }
+
+  .google img {
+    width: 350px;
+  }
+
+  .homeabouts {
+    margin: 0px 60px;
+  }
+
+  .homeabouts h3 {
+    font-size: 18px;
+  }
+
+  .homeabouts p {
+    font-size: 16px;
+  }
+
+  .home_numbers h1 {
+    font-size: 24px;
+  }
+
+  .home_numbers h3 {
+    font-size: 24px;
+  }
+
+  .home_num {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
