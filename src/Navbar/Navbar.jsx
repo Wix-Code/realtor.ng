@@ -21,7 +21,7 @@ const Navbar = () => {
 
 
   const user = JSON.parse(localStorage.getItem('user')) || null
-  const data = user?.info
+  //const data = user?.info
 
 
 
@@ -62,7 +62,7 @@ const Navbar = () => {
         }
         <div className='nav3'>
           {
-            user ? <li onClick={signOut}>Sign Out</li> :
+            user ? <li className='li' onClick={signOut}>Sign Out</li> :
               <ul>
                 {
                   Sign.map((link) => {
@@ -75,19 +75,7 @@ const Navbar = () => {
                 }
               </ul>
           }
-          <div className='nav_img'>
-            {
-              data && <>
-                <Link><img onClick={() => setClick(!click)} src={data && data.userimg || '/pics/avata.png'} alt="" /></Link>
-                {
-                  click && <div className="click">
-                    <Link to={`/lists/${post?.userId?._id}`}><h3 onClick={() => setClick(false)}>Profile</h3></Link>
-                    <h3 onClick={signOut}>Sign Out</h3>
-                  </div>
-                }
-              </>
-            }
-          </div>
+
           <div className="nav4">
             <button onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
           </div>

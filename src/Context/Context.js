@@ -74,19 +74,26 @@ const Context = (props) => {
       console.log(response.data)
       if (response.data.success === false) {
         setError(response.data.message)
+        
       }*/
+      console.log(response.data.message, "response")
       if (response.data.success) {
         localStorage.setItem('user', JSON.stringify(response.data));
         navigate('/'); // Navigate only on success
-      } else {
-        // Handle API-level failure
-        setError(response.data.message || "An unknown error occurred");
-        console.log(response.data.message)
-        alert("unkniwn error")
       }
-      //setLoading(false)
+      setLoading(false)
     } catch (error) {
       console.log(error)
+      if (error.response && error.response.data) {
+        const { success, message } = error.response.data;
+
+        // Handle the `success === false` case
+        if (success === false) {
+          console.error('Error:', message); // Logs "Invalid email or password"
+        }
+        setError(message)
+        console.log(error, "is error")
+      }
       setLoading(false)
     }
   }
@@ -123,7 +130,7 @@ const Context = (props) => {
         withCredentials: false,
       })
       setData(res.data.posts)
-      if (res.data.posts) {
+      if (res.data.posts && res.data.posts.length > 0) {
         navigate(`/search?${queryParams}`)
       } else {
         console.log("No property found")
@@ -134,25 +141,39 @@ const Context = (props) => {
     }
   }
 
+  const isFormReady = Object.values(filter || {}).some((value) => value && value !== "") || sort;
+
   const searchFilter = async (e) => {
     e.preventDefault()
-    setLoading(true)
     try {
+      setLoading(true)
 
       const queryParams = new URLSearchParams(
         Object.entries(filter).filter(([_, value]) => value)
       ).toString()
 
+      /*const queryParams = new URLSearchParams({
+        ...Object.fromEntries(Object.entries(filter).filter(([_, value]) => value)),
+        sort: sort, // Include the sort parameter
+      }).toString();*/
+
+      // Append the sort parameter
+      //const fullQuery = `${queryParams}&sort=${sort}`;
+
       const res = await axios.get(`http://localhost:5000/api/post/create?${queryParams}`, {
         withCredentials: false,
       })
-
-      console.log(queryParams)
-      setData(res.data.posts)
-      if (res.data.posts && res.data.posts.length > 0) {
-        navigate(`/search?${queryParams}`)
+      if (isFormReady) {
+        setLoading(true)
+        console.log(queryParams)
+        setData(res.data.posts)
+        if (res.data.posts && res.data.posts.length > 0) {
+          navigate(`/search?${queryParams}`)
+        } else {
+          console.log("No property found")
+        }
       } else {
-        console.log("No property found")
+        alert("Please provide at least one filter option.");
       }
       setFilter({
         bathroom: "",
@@ -174,7 +195,7 @@ const Context = (props) => {
   }
 
   const values = {
-    change, submit, loading, sort, data, setSort, search, setSearch, searchProperty, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData
+    change, submit, loading, sort, data, setSort, search, setSearch, searchProperty, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData, isFormReady
   }
 
   return (

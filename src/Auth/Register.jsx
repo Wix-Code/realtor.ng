@@ -8,6 +8,8 @@ const Register = () => {
 
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
 
   const [file, setFile] = useState(null)
   const [userDetails, setUserDetails] = useState({
@@ -25,10 +27,7 @@ const Register = () => {
     e.preventDefault()
     //setLoading(true)
     const url = await upload(file)
-    if (!url) {
-      alert("File upload failed. Please try again.");
-      return;
-    }
+
 
     try {
       const res = await axios.post('http://localhost:5000/api/auth/register', { ...userDetails, userimg: url })
@@ -37,6 +36,16 @@ const Register = () => {
       }
     } catch (error) {
       console.log(error)
+      if (error.response && error.response.data) {
+        const { success, message } = error.response.data;
+
+        // Handle the `success === false` case
+        if (success === false) {
+          console.error('Error:', message); // Logs "Invalid email or password"
+        }
+        setError(message)
+        console.log(error, "is error")
+      }
     }
 
   }
@@ -69,6 +78,11 @@ const Register = () => {
               <label htmlFor="">Password</label>
               <input type="password" name="password" placeholder='Password' onChange={change} required />
             </div>
+            {
+              error && <div className="error">
+                <p style={{ color: "red" }}>{error}</p>
+              </div>
+            }
             <button type='submit'>{loading ? "loading..." : 'Register'}</button>
           </form>
           <div className="account">

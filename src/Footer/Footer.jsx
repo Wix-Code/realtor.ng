@@ -15,7 +15,6 @@ const Footer = () => {
       <div className="foot">
         <div className="nav1">
           <Link to='/'><h1><span>real</span>tor.ng</h1></Link>
-
         </div>
         <div className="footer2">
           <h2>Quick Links</h2>

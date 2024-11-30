@@ -47,7 +47,7 @@ const Left = () => {
   return (
     <div className='left'>
       <div className="for_sale">
-        <h2>Property for Sale in Nigeria</h2>
+        <h2>Properties in Nigeria</h2>
         <select onChange={(e) => setSort(e.target.value)} name={sort} id="">
           <option>Sort By</option>
           <option value="most-recent">Most Recent</option>

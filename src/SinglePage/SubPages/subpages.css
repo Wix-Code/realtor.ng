@@ -66,8 +66,9 @@
 }
 
 .index_div button {
-  background: #e23c3c;
-  color: white;
+  background: #ffffff;
+  color: #e23c3c;
+  border: 1px solid #e23c3c;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -79,9 +80,10 @@
 }
 
 .close_icon {
-  background: #e23c3c;
-  color: white;
+  background: #ffffff;
+  color: #e23c3c;
   position: absolute;
+  border: 1px solid #e23c3c;
   top: 20px;
   right: 20px;
   height: 40px;
@@ -258,12 +260,16 @@
     gap: 20px;
   }
 
+  .back_to {
+    font-size: 12px;
+  }
+
   .bedroom h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .bedroom h2 {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .market_del {
@@ -297,6 +303,23 @@
   .cat_cat h4,
   .furn {
     font-size: 15px;
+  }
+
+  .index_div {
+    width: 100%;
+  }
+
+  .index_div img {
+    width: 70%;
+    height: 50vh;
+  }
+
+  .index_div button,
+  .close_icon {
+    font-size: 10px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
   }
 }
 

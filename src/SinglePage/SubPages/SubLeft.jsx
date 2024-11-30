@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './subpages.css'
-import { FaBath, FaBed, FaChevronLeft, FaUser } from 'react-icons/fa'
+import { FaBath, FaBed, FaChevronLeft, FaTimes, FaUser } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
-import { FaLocationDot } from 'react-icons/fa6'
+import { FaBars, FaLocationDot, FaMinus, FaPlus } from 'react-icons/fa6'
 import { HiViewList } from 'react-icons/hi'
 import { storeContext } from '../../Context/Context'
 
@@ -77,10 +77,13 @@ const SubLeft = () => {
     <div className='subleft'>
       {
         fullscreen ? <div className="index_div">
-          <button onClick={() => prev("p")}>-</button>
+          <button onClick={() => prev("p")}><FaMinus />
+          </button>
           <img src={post?.img[zoom]} alt="" />
-          <button onClick={() => next("n")}>+</button>
-          <div className="close_icon" onClick={() => setFullscreen(false)}>X</div>
+          <button onClick={() => next("n")}><FaPlus />
+          </button>
+          <div className="close_icon" onClick={() => setFullscreen(false)}><FaTimes />
+          </div>
         </div> : null
       }
       <div className="back_to">

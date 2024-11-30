@@ -4,7 +4,7 @@ import { storeContext } from '../Context/Context'
 
 const Right = () => {
 
-  const { filter, setChangeFilter, searchFilter, loading } = useContext(storeContext)
+  const { filter, setChangeFilter, searchFilter, loading, isFormReady } = useContext(storeContext)
 
   return (
     <div className='right'>
@@ -54,7 +54,7 @@ const Right = () => {
               </select>
             </div>
           </div>
-          <button disabled={loading} onClick={searchFilter}>{loading ? "Searching" : "Search"}</button>
+          <button disabled={loading || !isFormReady} onClick={searchFilter}>{loading ? "Searching" : "Search"}</button>
         </form>
       </div>
     </div>

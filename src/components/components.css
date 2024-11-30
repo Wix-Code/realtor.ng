@@ -539,12 +539,18 @@
     font-size: 20px;
   }
 
-  .company_logo {
+  .company {
     display: flex;
     align-items: center;
-    width: 100%;
     justify-content: center;
+    margin: 0px 20px;
+  }
+
+  .company_logo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    width: 100%;
   }
 
   .company_logo img {
@@ -552,7 +558,7 @@
   }
 
   .latest {
-    margin: 0px 60px;
+    margin: 0px 20px;
   }
 
   .latest_contain h4,
@@ -571,6 +577,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    width: 100%;
   }
 
   .late_desc p {

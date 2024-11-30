@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Buy from './Properties/Properties'
 import Home from './Home/Home'
@@ -12,6 +12,7 @@ import CreatePosts from './CreatePost/CreatePosts'
 import UserPosts from './UserPosts/UserPosts'
 import UpdatePost from './CreatePost/UpdatePost'
 import Search from './Search/Search'
+import Loader from './Loader/Loader'
 
 const Rout = () => {
   return (

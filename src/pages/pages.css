@@ -387,6 +387,21 @@ form button:hover {
   .right {
     margin: 0px 10px;
   }
+
+  .advan h2 {
+    font-size: 16px;
+  }
+
+  .inp label,
+  .inp select,
+  .right_select label,
+  .right_select select {
+    font-size: 13px;
+  }
+
+  .pagination button {
+    font-size: 10px;
+  }
 }
 
 @media screen and (min-width : 501px) and (max-width : 700px) {
@@ -445,6 +460,18 @@ form button:hover {
   .right {
     margin: 0px 10px;
   }
+
+  .advan h2 {
+    font-size: 16px;
+  }
+
+  .inp label,
+  .inp select,
+  .right_select label,
+  .right_select select {
+    font-size: 13px;
+  }
+
 }
 
 @media screen and (min-width : 701px) and (max-width : 900px) {

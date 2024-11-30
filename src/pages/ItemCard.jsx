@@ -17,7 +17,6 @@ const ItemCard = ({ item }) => {
   //console.log(user)
 
   console.log("user id", data?._id)
-  console.log("item user id", item.userId._id)
 
   /*if (!data) {
     return null
@@ -84,7 +83,7 @@ const ItemCard = ({ item }) => {
           <div className="item">
             <h2>&#8358;{item.price}</h2>
             <div className="item_no">
-              <span>{item.userId.username}</span>
+              <span>{item?.userId?.username}</span>
               <div className="item_ph">
                 <FaPhoneAlt />
                 <h5>{item.phoneNo}</h5>

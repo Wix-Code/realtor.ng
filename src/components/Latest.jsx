@@ -32,7 +32,7 @@ const Latest = () => {
         </div>
         <div className="late">
           {
-            data.slice(0, 4).map((item) => {
+            data.slice(0, 6).map((item) => {
               return (
                 <div className="latest_contain" key={item._id}>
                   <h4>{item.title}</h4>

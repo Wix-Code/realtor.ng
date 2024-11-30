@@ -118,6 +118,9 @@ export const getAllPosts = async (req, res) => {
       filter.location = { $regex: location, $options: "i" }
     }
 
+
+
+
     if (sort === "highest-price") {
       sortOptions.price = -1
     };
@@ -130,6 +133,11 @@ export const getAllPosts = async (req, res) => {
     if (sort === "oldest") {
       sortOptions.createdAt = 1
     };
+
+    // Default to sorting by most recent if no sort option is specified
+    if (!Object.keys(sortOptions).length) {
+      sortOptions.createdAt = -1;
+    }
 
     const posts = await Post.find(filter).sort(sortOptions).populate('userId').lean()
 
