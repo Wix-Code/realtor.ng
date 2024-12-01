@@ -1,0 +1,99 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.reg {
+  background: #f0f0f0;
+  padding: 20px 0px;
+}
+
+.reg_hi {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.reg_hi h1 {
+  font-weight: 500;
+  font-size: 22px;
+  color: #474747;
+}
+
+.regis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register_form {
+  width: 450px;
+  border: 1px solid #f0f0f0;
+}
+
+.account {
+  padding: 15px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account h3 {
+  color: #474747;
+  font-weight: 400;
+}
+
+.account span {
+  color: #e23c3c;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.register_form form {
+  padding: 20px;
+}
+
+.reg_inp {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reg_inp input {
+  border: 1px solid #f0f0f0;
+  width: 100%;
+  font-size: 17px;
+  color: #666;
+  padding: 15px;
+}
+
+.account span:hover {
+  color: #d82626;
+}
+
+@media screen and (max-width : 1199px) {
+  .reg_hi {
+    margin: 0px 10px;
+    font-size: 14px;
+  }
+
+  .regis {
+    margin: 0px 20px;
+  }
+
+  .reg_inp input,
+  .reg_inp label,
+  form button {
+    font-size: 14px;
+  }
+
+  .error {
+    font-size: 10px;
+  }
+
+  .account {
+    font-size: 14px;
+  }
+}
