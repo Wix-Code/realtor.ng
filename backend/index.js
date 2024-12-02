@@ -22,7 +22,7 @@ app.use(cors({
 }));
 
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.send("my api")
 })
 
