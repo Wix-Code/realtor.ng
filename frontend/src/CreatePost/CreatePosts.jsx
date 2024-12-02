@@ -63,7 +63,7 @@ const CreatePosts = () => {
       return;
     } */
 
-    const res = await axios.post('http://localhost:5000/api/post/create', {
+    const res = await axios.post('https://realtor-ng.vercel.app/api/post/create', {
       ...postDetails,
       img: urls,
       userId: data._id
