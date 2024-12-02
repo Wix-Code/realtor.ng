@@ -109,7 +109,7 @@ const Context = (props) => {
         setData(res.data.posts)
         //console.log(res.data.posts)
       } catch (error) {
-        console.error(error)
+        console.log(error)
       }
     }
     fetchData()
