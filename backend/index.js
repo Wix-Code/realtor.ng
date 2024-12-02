@@ -26,9 +26,9 @@ app.get('/', (req, res) => {
   res.send("my api")
 })
 
-app.use('/api/auth', authRouter)
-app.use('/api/user', userRouter)
-app.use('/api/post', postRouter)
+app.use('/auth', authRouter)
+app.use('/user', userRouter)
+app.use('/post', postRouter)
 
 
 app.listen(5000, () => {
