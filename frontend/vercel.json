@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "https://realtor-ng-n8zg.vercel.app/"
+      "destination": "/"
     }
   ]
 }
