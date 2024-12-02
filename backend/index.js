@@ -15,7 +15,9 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: ['https://realtor-frontend-xi.vercel.app'], // allow requests from this origin
+  origin: ['https://realtor-frontend-xi.vercel.app',
+    'http://localhost:3000',
+  ], // allow requests from this origin
   credentials: true, // allow cookies
 }));
 
