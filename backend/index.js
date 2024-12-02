@@ -17,18 +17,20 @@ app.use(cookieParser());
 app.use(cors({
   origin: ['https://realtor-frontend-xi.vercel.app',
     'http://localhost:3000',
-  ], // allow requests from this origin
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // allow requests from this origin
   credentials: true, // allow cookies
 }));
 
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send("my api")
 })
 
-app.use('/auth', authRouter)
-app.use('/user', userRouter)
-app.use('/post', postRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/user', userRouter)
+app.use('/api/post', postRouter)
 
 
 app.listen(5000, () => {
