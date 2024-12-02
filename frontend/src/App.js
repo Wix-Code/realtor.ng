@@ -3,7 +3,6 @@ import './App.css'
 import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
 import Rout from './Rout'
-import Loader from './Loader/Loader'
 
 const App = () => {
 
@@ -11,11 +10,9 @@ const App = () => {
 
   return (
     <div>
-      <Suspense fallback={<Loader />}>
-        <Navbar />
-        <Rout />
-        <Footer />
-      </Suspense>
+      <Navbar />
+      <Rout />
+      <Footer />
 
     </div>
   )
