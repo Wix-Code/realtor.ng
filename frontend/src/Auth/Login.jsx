@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './auth.css'
 import { Link } from 'react-router-dom'
 import { storeContext } from '../Context/Context'
