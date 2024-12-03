@@ -13,8 +13,8 @@ const UserPosts = () => {
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
 
-  console.log(data._id, "data me")
-  console.log(user, "user info me")
+  // console.log(data._id, "data me")
+  //console.log(user, "user info me")
 
 
   useEffect(() => {

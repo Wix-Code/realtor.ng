@@ -25,7 +25,7 @@ const Register = () => {
   }
   const submit = async (e) => {
     e.preventDefault()
-    //setLoading(true)
+    setLoading(true)
     const url = await upload(file)
 
 
@@ -34,6 +34,7 @@ const Register = () => {
       if (res) {
         navigate('/signin')
       }
+      setLoading(false)
     } catch (error) {
       console.log(error)
       if (error.response && error.response.data) {
@@ -83,7 +84,7 @@ const Register = () => {
                 <p style={{ color: "red" }}>{error}</p>
               </div>
             }
-            <button type='submit'>{loading ? "loading..." : 'Register'}</button>
+            <button type='submit'>{loading ? "Registering..." : 'Register'}</button>
           </form>
           <div className="account">
             <h3>Already have an account?</h3>
