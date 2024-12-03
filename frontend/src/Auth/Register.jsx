@@ -53,7 +53,7 @@ const Register = () => {
 
   const [loader, setLoader] = useState(true)
   useEffect(() => {
-    setTimeout(() => setLoader(false), 6000)
+    setTimeout(() => setLoader(false), 5000)
   }, [])
   if (loader) {
     return <Loader />
