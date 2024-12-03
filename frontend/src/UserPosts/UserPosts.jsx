@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import './userposts.css'
 import ItemCard from '../pages/ItemCard'
 import { FaRegEdit } from 'react-icons/fa'
+import Loader from '../Loader/Loader'
 
 const UserPosts = () => {
   const { id } = useParams()
@@ -33,6 +34,15 @@ const UserPosts = () => {
 
     fetchData()
   }, [id])
+
+  const [loader, setLoader] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setLoader(false), 5000)
+  }, [])
+  if (loader) {
+    return <Loader />
+  }
 
 
   return (

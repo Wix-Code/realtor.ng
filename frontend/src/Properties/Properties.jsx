@@ -4,6 +4,7 @@ import PropertyHero from './PropertyHero'
 import Divide from '../pages/Divide'
 import axios from 'axios'
 import Left from '../pages/Left'
+import Loader from '../Loader/Loader'
 
 const Properties = () => {
 
@@ -24,6 +25,15 @@ const Properties = () => {
 
     fetchData()
   }, [])
+
+  const [loader, setLoader] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setLoader(false), 5000)
+  }, [])
+  if (loader) {
+    return <Loader />
+  }
 
   return (
     <div className='buy'>

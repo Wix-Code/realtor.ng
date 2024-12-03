@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { storeContext } from '../Context/Context'
 import ItemCard from '../pages/ItemCard'
 import './search.css'
 import Divide from '../pages/Divide'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
+import Loader from '../Loader/Loader'
 
 const Search = () => {
 
@@ -32,6 +33,14 @@ const Search = () => {
     fetchData();
   }, [location.search, setData]); // Re-fetch if the URL changes
 
+  const [loader, setLoader] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setLoader(false), 5000)
+  }, [])
+  if (loader) {
+    return <Loader />
+  }
 
 
   return (

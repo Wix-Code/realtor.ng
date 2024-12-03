@@ -10,7 +10,7 @@ import Loader from '../Loader/Loader'
 
 const Home = () => {
 
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(true)
 
   useEffect(() => {
     setTimeout(() => setLoader(false), 5000)
