@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
 import Rout from './Rout'
+import ScrollToTop from './ScrollToTop/ScrollToTop'
 
 const App = () => {
 
