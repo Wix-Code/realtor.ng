@@ -29,7 +29,7 @@
   }
 }
 
-@media screen and (max-width : 800) {
+@media screen and (max-width : 800px) {
   .loader h1 {
     font-size: 20px;
   }
