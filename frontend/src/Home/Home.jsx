@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Hero from '../components/Hero'
 import Latest from '../components/Latest'
 import './home.css'
 import Google from '../components/Google'
 import HomeAbout from '../components/HomeAbout'
 import Companies from '../components/Companies'
+import Loader from '../Loader/Loader'
+
 
 const Home = () => {
 
+  const [loader, setLoader] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => setLoader(false), 5000)
+  }, [])
+  if (loader) {
+    return <Loader />
+  }
 
   return (
     <div className='home'>

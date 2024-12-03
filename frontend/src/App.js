@@ -9,10 +9,10 @@ const App = () => {
 
   return (
     <div>
+      <ScrollToTop />
       <Navbar />
       <Rout />
       <Footer />
-
     </div>
   )
 }
