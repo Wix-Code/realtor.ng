@@ -5,6 +5,7 @@ import upload from '../utils/upload'
 import { useNavigate } from 'react-router-dom'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import Loader from '../Loader/Loader'
 
 const CreatePosts = () => {
 
@@ -32,11 +33,22 @@ const CreatePosts = () => {
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
 
+  const [loader, setLoader] = useState(true)
+
+
+
   useEffect(() => {
     if (!data) {
       navigate('/signin')
     }
   })
+
+  useEffect(() => {
+    setTimeout(() => setLoader(false), 6000)
+  }, [])
+  if (loader) {
+    return <Loader />
+  }
 
   const handleEvent = (e) => {
     setPostDetails({ ...postDetails, [e.target.name]: e.target.value })

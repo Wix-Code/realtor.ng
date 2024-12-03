@@ -2,12 +2,21 @@ import React, { useContext } from 'react'
 import './auth.css'
 import { Link } from 'react-router-dom'
 import { storeContext } from '../Context/Context'
+import Loader from '../Loader/Loader'
 
 
 
 const Login = () => {
 
   const { submit, change, error, loading } = useContext(storeContext)
+  const [loader, setLoader] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setLoader(false), 6000)
+  }, [])
+  if (loader) {
+    return <Loader />
+  }
 
   return (
     <div className='register'>

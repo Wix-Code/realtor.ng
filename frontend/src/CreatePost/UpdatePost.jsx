@@ -3,6 +3,7 @@ import './createpost.css'
 import axios from 'axios'
 import upload from '../utils/upload'
 import { useNavigate, useParams } from 'react-router-dom'
+import Loader from '../Loader/Loader'
 
 const UpdatePost = () => {
 
@@ -12,6 +13,7 @@ const UpdatePost = () => {
 
   const { id } = useParams();
 
+  const [loader, setLoader] = useState(true)
   const [file, setFile] = useState(null)
   const [postDetails, setPostDetails] = useState({
     title: '',
@@ -47,6 +49,13 @@ const UpdatePost = () => {
 
     fetch();
   }, [id])
+
+  useEffect(() => {
+    setTimeout(() => setLoader(false), 6000)
+  }, [])
+  if (loader) {
+    return <Loader />
+  }
 
   const handleEvent = (e) => {
     setPostDetails({ ...postDetails, [e.target.name]: e.target.value })

@@ -3,6 +3,7 @@ import './auth.css'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import upload from '../utils/upload'
+import Loader from '../Loader/Loader'
 
 const Register = () => {
 
@@ -48,8 +49,16 @@ const Register = () => {
         console.log(error, "is error")
       }
     }
-
   }
+
+  const [loader, setLoader] = useState(true)
+  useEffect(() => {
+    setTimeout(() => setLoader(false), 6000)
+  }, [])
+  if (loader) {
+    return <Loader />
+  }
+
   return (
     <div className='register'>
       <div className="reg">
