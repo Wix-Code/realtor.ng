@@ -63,7 +63,7 @@ const CreatePosts = () => {
       return;
     } */
 
-    const res = await axios.post('https://realtor-ng.vercel.app/api/post/create', {
+    const res = await axios.post('https://back-end-g5hr.onrender.com/api/post/create', {
       ...postDetails,
       img: urls,
       userId: data._id

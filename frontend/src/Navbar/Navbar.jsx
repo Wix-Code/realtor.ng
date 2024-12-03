@@ -30,7 +30,7 @@ const Navbar = () => {
 
   const signOut = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/logout')
+      await axios.post('https://back-end-g5hr.onrender.com/api/auth/logout')
       localStorage.removeItem('user', null)
       navigate('/')
       setClick(false)

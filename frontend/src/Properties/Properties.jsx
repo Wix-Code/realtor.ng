@@ -12,7 +12,7 @@ const Properties = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('https://realtor-ng.vercel.app/api/post/create', {
+        const res = await axios.get('https://back-end-g5hr.onrender.com/api/post/create', {
           withCredentials: true,
         })
         setData(res.data.posts)

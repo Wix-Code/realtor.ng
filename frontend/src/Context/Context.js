@@ -42,7 +42,7 @@ const Context = (props) => {
   // useEffect(() => {
   const fetchData = async (id) => {
     try {
-      const res = await axios.get(`https://realtor-ng.vercel.app/api/post/single/${id}`, {
+      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/single/${id}`, {
         withCredentials: false
       })
       setPost(res.data.posts)
@@ -67,7 +67,7 @@ const Context = (props) => {
 
     try {
       setLoading(true)
-      const response = await axios.post('https://realtor-ng.vercel.app/api/auth/login', userDetails, { withCredentials: true })
+      const response = await axios.post('https://back-end-g5hr.onrender.com/api/auth/login', userDetails, { withCredentials: true })
       console.log("Api error", response.data)
       /*navigate('/')
       localStorage.setItem('user', JSON.stringify(response.data))
@@ -103,7 +103,7 @@ const Context = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://realtor-ng.vercel.app/api/post/create?location=${search}&sort=${sort}`, {
+        const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?location=${search}&sort=${sort}`, {
           withCredentials: false,
         })
         setData(res.data.posts)
@@ -127,7 +127,7 @@ const Context = (props) => {
         Object.entries(search).filter(([_, value]) => value)
       ).toString()
 
-      const res = await axios.get(`https://realtor-ng.vercel.app/api/post/create?location=${search}`, {
+      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?location=${search}`, {
         withCredentials: false,
       })
       setData(res.data.posts)
@@ -161,7 +161,7 @@ const Context = (props) => {
       // Append the sort parameter
       //const fullQuery = `${queryParams}&sort=${sort}`;
 
-      const res = await axios.get(`https://realtor-ng.vercel.app/api/post/create?${queryParams}`, {
+      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
         withCredentials: false,
       })
       if (isFormReady) {

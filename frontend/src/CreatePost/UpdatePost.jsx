@@ -67,7 +67,7 @@ const UpdatePost = () => {
 
     const token = localStorage.getItem('token');
 
-    const res = await axios.post(`https://realtor-ng.vercel.app/api/post/update/${id}`, {
+    const res = await axios.post(`https://back-end-g5hr.onrender.com/api/post/update/${id}`, {
       ...postDetails,
       img: url,
       userId: data._id

@@ -29,7 +29,7 @@ const ItemCard = ({ item }) => {
 
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/post/delete/${item._id}`, {
+      await axios.delete(`https://back-end-g5hr.onrender.com/api/post/delete/${item._id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }, withCredentials: true,

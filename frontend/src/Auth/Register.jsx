@@ -30,7 +30,7 @@ const Register = () => {
 
 
     try {
-      const res = await axios.post('https://realtor-ng.vercel.app/api/auth/register', { ...userDetails, userimg: url })
+      const res = await axios.post('https://back-end-g5hr.onrender.com/api/auth/register', { ...userDetails, userimg: url })
       if (res) {
         navigate('/signin')
       }
