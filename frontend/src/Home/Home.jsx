@@ -13,7 +13,7 @@ const Home = () => {
   const [loader, setLoader] = useState(true)
 
   useEffect(() => {
-    setTimeout(() => setLoader(false), 6000)
+    setTimeout(() => setLoader(false), 7000)
   }, [])
   if (loader) {
     return <Loader />
