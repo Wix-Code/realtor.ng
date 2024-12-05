@@ -15,7 +15,7 @@ const Hero = () => {
       <div className="search">
         <input type="text" placeholder='Search by location...' onChange={(e) => setSearch(e.target.value)} required />
         <div className="hero_btn">
-          <button disabled={loading || search === ""} onClick={searchProperty}>{loading ? "Searching..." : "Search"}</button>
+          <button disabled={loading || search === ""} onClick={searchProperty}>{loading ? "Searching..." : "Search.."}</button>
         </div>
       </div>
     </div>
