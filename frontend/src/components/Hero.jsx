@@ -6,7 +6,7 @@ import { storeContext } from '../Context/Context'
 const Hero = () => {
 
 
-  const { searchProperty, setSearch, search } = useContext(storeContext)
+  const { searchProperty, setSearch, search, loading } = useContext(storeContext)
 
 
   return (
@@ -15,7 +15,7 @@ const Hero = () => {
       <div className="search">
         <input type="text" placeholder='Search by location...' onChange={(e) => setSearch(e.target.value)} required />
         <div className="hero_btn">
-          <button disabled={search === ""} onClick={searchProperty}>Search</button>
+          <button disabled={loading || search === ""} onClick={searchProperty}>{loading ? "Searching..." : "Search"}</button>
         </div>
       </div>
     </div>
