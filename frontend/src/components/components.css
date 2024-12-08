@@ -59,6 +59,10 @@
   background: #e62828;
 }
 
+.hero_btn button:disabled {
+  cursor: not-allowed;
+}
+
 
 
 /**** COMPANY ****/

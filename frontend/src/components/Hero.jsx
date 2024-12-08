@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './components.css'
 import { CiSearch } from 'react-icons/ci'
 import { storeContext } from '../Context/Context'
@@ -15,7 +15,7 @@ const Hero = () => {
       <div className="search">
         <input type="text" placeholder='Search by location...' onChange={(e) => setSearch(e.target.value)} required />
         <div className="hero_btn">
-          <button disabled={loading || search === ""} onClick={searchProperty}>{loading ? "Searching..." : "Search.."}</button>
+          <button disabled={loading || search === ""} onClick={searchProperty}>{loading ? "Searching..." : "Search"}</button>
         </div>
       </div>
     </div>

@@ -120,6 +120,7 @@ const Context = (props) => {
 
   const searchProperty = async (e) => {
     e.preventDefault()
+    setLoading(true)
     try {
       const queryParams = new URLSearchParams(
         Object.entries(search).filter(([_, value]) => value)
@@ -135,8 +136,10 @@ const Context = (props) => {
         console.log("No property found")
       }
       console.log(res.data.posts)
+      setLoading(false)
     } catch (error) {
       console.error(error)
+      setLoading(false)
     }
   }
 

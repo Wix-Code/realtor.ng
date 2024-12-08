@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './createpost.css'
 import axios from 'axios'
 import upload from '../utils/upload'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loader from '../Loader/Loader'
-import { storeContext } from '../Context/Context'
 
 const UpdatePost = () => {
 
-  const { loading } = useContext(storeContext)
+  const { loading, setLoading } = useState(false)
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
@@ -70,6 +69,7 @@ const UpdatePost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
 
     let urls = postDetails.img
 
@@ -102,6 +102,7 @@ const UpdatePost = () => {
 
     console.log(postDetails)
     console.log(res.data)
+    setLoading(false)
   }
   return (
     <div className='create'>
