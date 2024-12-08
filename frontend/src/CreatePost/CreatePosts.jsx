@@ -175,7 +175,7 @@ const CreatePosts = () => {
           </div>
           <div className="creat">
             <label htmlFor="">Description</label>
-            <textarea name="description" onChange={handleEvent} id=""></textarea>
+            <textarea name="description" onChange={handleEvent} id="" required></textarea>
           </div>
         </div>
         <button disabled={loading} type='submit'>{loading ? "Creating Post" : "Submit"}</button>
