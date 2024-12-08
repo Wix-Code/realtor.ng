@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+heimport React, { useContext, useEffect, useState } from 'react'
 import { storeContext } from '../Context/Context'
 import ItemCard from '../pages/ItemCard'
 import './search.css'
@@ -20,7 +20,7 @@ const Search = () => {
 
       if (queryParams) {
         try {
-          const res = await axios.get(`https://realtor-ng.vercel.app/api/post/create?${queryParams}`, {
+          const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
             withCredentials: false,
           });
           setData(res.data.posts || []); // Persist data in context/state
