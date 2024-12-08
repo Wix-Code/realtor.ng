@@ -23,15 +23,24 @@ const Search = () => {
           const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
             withCredentials: false,
           });
-          setData(res.data.posts || []); // Persist data in context/state
+          const fetchedData = res.data.posts || [];
+          setData(fetchedData); // Update context
+          localStorage.setItem('searchedData', JSON.stringify(fetchedData));
         } catch (error) {
-          console.error("Error fetching data:", error);
+          console.log("Error fetching data:", error);
         }
       }
     };
 
     fetchData();
   }, [location.search, setData]); // Re-fetch if the URL changes
+
+  useEffect(() => {
+    const savedData = localStorage.getItem('searchedData');
+    if (savedData) {
+      setData(JSON.parse(savedData));
+    }
+  }, [setData]);
 
   const [loader, setLoader] = useState(true)
 

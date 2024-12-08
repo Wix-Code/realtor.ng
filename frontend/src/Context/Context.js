@@ -102,7 +102,7 @@ const Context = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?location=${search}&sort=${sort}`, {
+        const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?sort=${sort}`, {
           withCredentials: false,
         })
         setData(res.data.posts)
@@ -138,6 +138,10 @@ const Context = (props) => {
     } catch (error) {
       console.error(error)
     }
+  }
+
+  const setChangeFilter = (e) => {
+    setFilter((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   const isFormReady = Object.values(filter || {}).some((value) => value && value !== "") || sort;
@@ -189,9 +193,7 @@ const Context = (props) => {
     }
   }
 
-  const setChangeFilter = (e) => {
-    setFilter((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+
 
   const values = {
     change, submit, loading, sort, data, setSort, search, setSearch, searchProperty, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData, isFormReady

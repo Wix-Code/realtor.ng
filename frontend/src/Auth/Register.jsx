@@ -94,7 +94,7 @@ const Register = () => {
                 <p style={{ color: "red" }}>{error}</p>
               </div>
             }
-            <button type='submit'>{loading ? "Registering..." : 'Register'}</button>
+            <button type='submit' disabled={loading}>{loading ? "Registering..." : 'Register'}</button>
           </form>
           <div className="account">
             <h3>Already have an account?</h3>
