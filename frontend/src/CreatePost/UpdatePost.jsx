@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './createpost.css'
 import axios from 'axios'
 import upload from '../utils/upload'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loader from '../Loader/Loader'
+import { storeContext } from '../Context/Context'
 
 const UpdatePost = () => {
 
+  const { loading } = useContext(storeContext)
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
@@ -14,7 +16,7 @@ const UpdatePost = () => {
   const { id } = useParams();
 
   const [loader, setLoader] = useState(true)
-  const [file, setFile] = useState(null)
+  const [files, setFiles] = useState(null)
   const [postDetails, setPostDetails] = useState({
     title: '',
     location: '',
@@ -30,6 +32,11 @@ const UpdatePost = () => {
     img: '',
     userId: '',
   })
+
+  const handleFiles = (e) => {
+    setFiles([...e.target.files])
+  }
+
 
   useEffect(() => {
     const fetch = async () => {
@@ -64,21 +71,26 @@ const UpdatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    let url = postDetails.img
+    let urls = postDetails.img
 
-    if (file) {
-      url = await upload(file)
-      if (!url) {
-        alert("File upload failed. Please try again.");
-        return;
-      }
+    // If new files are uploaded, handle the upload process.
+    if (files && files.length > 0) {
+      const newUrls = await Promise.all(
+        files.map(async (file) => {
+          const url = await upload(file); // Assuming `upload` is implemented for uploading files.
+          if (!url) throw new Error('File upload failed');
+          return url;
+        })
+      );
+
+      urls = [...urls, ...newUrls]; // Combine old and new URLs.
     }
 
     const token = localStorage.getItem('token');
 
     const res = await axios.post(`https://back-end-g5hr.onrender.com/api/post/update/${id}`, {
       ...postDetails,
-      img: url,
+      img: urls,
       userId: data._id
     }, {
       headers: {
@@ -164,14 +176,14 @@ const UpdatePost = () => {
         <div className="create-two">
           <div className="creat">
             <label htmlFor="image">Images</label>
-            <input type="file" onChange={(e) => setFile(e.target.files[0])} name="" id="image" />
+            <input type="file" multiple onChange={handleFiles} name="img" id="image" />
           </div>
           <div className="creat">
             <label htmlFor="">Description</label>
             <textarea name="description" value={postDetails.description} placeholder='Description' onChange={handleEvent} />
           </div>
         </div>
-        <button type='submit'>Submit</button>
+        <button type='submit' disabled={loading}>{loading ? "Updating..." : "Update"}</button>
       </form>
     </div>
   )
