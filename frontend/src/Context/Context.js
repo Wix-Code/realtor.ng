@@ -117,7 +117,6 @@ const Context = (props) => {
 
   console.log(data)
 
-  // https://realtor-ng.vercel.app/?vercelToolbarCode=AUcINQ-VvGAc54T
 
 
   const searchProperty = async (e) => {

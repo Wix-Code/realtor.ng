@@ -15,11 +15,10 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: ['https://realtor-frontend-xi.vercel.app',
-    'http://localhost:3000',
+  origin: ["https://realtor-frontend-xi.vercel.app", "http://localhost:3000",
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'],  // allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Credentials'],
   credentials: true, // allow cookies
 }));
 

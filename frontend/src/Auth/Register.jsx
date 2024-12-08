@@ -48,6 +48,7 @@ const Register = () => {
         setError(message)
         console.log(error, "is error")
       }
+      setLoading(false)
     }
   }
 

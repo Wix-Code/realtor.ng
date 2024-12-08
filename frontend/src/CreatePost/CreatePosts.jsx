@@ -26,7 +26,7 @@ const CreatePosts = () => {
     furnish: '',
     type: '',
     bathroom: '',
-    img: [],
+    images: [],
     userId: '',
   })
 
@@ -74,16 +74,28 @@ const CreatePosts = () => {
       alert("File upload failed. Please try again.");
       return;
     } */
+    try {
+      const payload = {
+        ...postDetails,
+        images: urls,
+        userId: data._id
+      }
 
-    const res = await axios.post('https://back-end-g5hr.onrender.com/api/post/create', {
-      ...postDetails,
-      img: urls,
-      userId: data._id
-    }, { withCredentials: true })
-    navigate('/')
-    setLoading(false)
-    console.log(postDetails)
-    console.log(res.data)
+      console.log(payload, "payload")
+
+      const res = await axios.post('https://back-end-g5hr.onrender.com/api/post/create', payload, {
+        headers: {
+          Authorization: `Bearer ${data._id}`,
+        }, withCredentials: true
+      })
+      navigate('/')
+      setLoading(false)
+      console.log(postDetails)
+      console.log(res.data)
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+    }
   }
 
   return (
