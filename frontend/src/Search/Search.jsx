@@ -1,4 +1,4 @@
-heimport React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { storeContext } from '../Context/Context'
 import ItemCard from '../pages/ItemCard'
 import './search.css'
