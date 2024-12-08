@@ -23,16 +23,19 @@ const ItemCard = ({ item }) => {
   } */
 
   //const { id } = useParams()
+  const token = localStorage.getItem('token');
+
+  console.log(token, "token is here")
 
 
   const deletePost = async () => {
 
-    const token = localStorage.getItem('token');
+    //const token = localStorage.getItem('token');
     try {
       await axios.delete(`https://back-end-g5hr.onrender.com/api/post/delete/${item._id}`, {
-        headers: {
+        /*headers: {
           Authorization: `Bearer ${token}`
-        }, withCredentials: true,
+        },*/ withCredentials: true,
       })
       navigate('/')
     } catch (error) {
