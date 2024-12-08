@@ -68,7 +68,7 @@ const Context = (props) => {
     try {
       setLoading(true)
       const response = await axios.post('https://back-end-g5hr.onrender.com/api/auth/login', userDetails, { withCredentials: true })
-      console.log("Api error", response.data)
+      console.log("Api data", response.data)
       /*navigate('/')
       localStorage.setItem('user', JSON.stringify(response.data))
       console.log(response.data)
@@ -76,7 +76,6 @@ const Context = (props) => {
         setError(response.data.message)
         
       }*/
-      console.log(response.data.message, "response")
       if (response.data.success) {
         localStorage.setItem('user', JSON.stringify(response.data));
         navigate('/'); // Navigate only on success

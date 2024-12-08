@@ -26,12 +26,14 @@ const CreatePosts = () => {
     furnish: '',
     type: '',
     bathroom: '',
-    images: [],
+    img: [],
     userId: '',
   })
 
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
+
+  console.log(data._id, "data id")
 
   const [loader, setLoader] = useState(true)
 
@@ -77,7 +79,7 @@ const CreatePosts = () => {
     try {
       const payload = {
         ...postDetails,
-        images: urls,
+        img: urls,
         userId: data._id
       }
 
