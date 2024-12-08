@@ -33,9 +33,9 @@ const ItemCard = ({ item }) => {
     //const token = localStorage.getItem('token');
     try {
       await axios.delete(`https://back-end-g5hr.onrender.com/api/post/delete/${item._id}`, {
-        /*headers: {
-          Authorization: `Bearer ${token}`
-        },*/ withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${data._id}`
+        }, withCredentials: true,
       })
       navigate('/')
     } catch (error) {
