@@ -13,43 +13,61 @@ const Search = () => {
 
   const location = useLocation();
 
+  /**useEffect(() => {
+    const storedProperties = localStorage.getItem('searchedProperties');
+    if (storedProperties) {
+      const parsedData = JSON.parse(storedProperties);
+      setData(parsedData.posts); // Update the state with persisted data
+    }
+  }, []);**/
+
   useEffect(() => {
     const fetchData = async () => {
       const searchParams = new URLSearchParams(location.search);
       const queryParams = searchParams.toString();
 
+      console.log(queryParams, "property")
+
       if (queryParams) {
         try {
           const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
             withCredentials: false,
-          });
-          const fetchedData = res.data.posts || [];
-          setData(fetchedData); // Update context
-          localStorage.setItem('searchedData', JSON.stringify(fetchedData));
+          })
+          //const fetchedData = res.data.posts || [];
+          setData(res.data.posts); // Update context or state
+          console.log(res.data, "serached")
+          //localStorage.setItem('searchedProperties', JSON.stringify(fetchedData))
         } catch (error) {
           console.log("Error fetching data:", error);
         }
-      }
+      } /**else {
+        // Load from localStorage if no queryParams
+        const storedProperties = localStorage.getItem('searchedProperties');
+        if (storedProperties) {
+          setData(JSON.parse(storedProperties));
+        }
+    }**/
     };
 
     fetchData();
   }, [location.search, setData]); // Re-fetch if the URL changes
 
-  useEffect(() => {
-    const savedData = localStorage.getItem('searchedData');
-    if (savedData) {
-      setData(JSON.parse(savedData));
-    }
-  }, [setData]);
+  /**  useEffect(() => {
+     const savedData = localStorage.getItem('searchedProperties');
+     if (savedData) {
+       setData(JSON.parse(savedData));
+     }
+   }, []); **/
 
   const [loader, setLoader] = useState(true)
 
   useEffect(() => {
-    setTimeout(() => setLoader(false), 6000)
+    setTimeout(() => setLoader(false), 4000)
   }, [])
   if (loader) {
     return <Loader />
   }
+
 
 
   return (

@@ -106,6 +106,7 @@ const Context = (props) => {
           withCredentials: false,
         })
         setData(res.data.posts)
+        //localStorage.setItem('allProperties', JSON.stringify(res.data))
         //console.log(res.data.posts)
       } catch (error) {
         console.log(error)
@@ -126,16 +127,15 @@ const Context = (props) => {
         Object.entries(search).filter(([_, value]) => value)
       ).toString()
 
-      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?location=${search}`, {
+      console.log(queryParams, "Filtered properties")
+
+      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?location${search}`, {
         withCredentials: false,
       })
       setData(res.data.posts)
-      if (res.data.posts && res.data.posts.length > 0) {
-        navigate(`/search?${queryParams}`)
-      } else {
-        console.log("No property found")
-      }
-      console.log(res.data.posts)
+      //localStorage.setItem('searchedProperties', JSON.stringify(res.data))
+      navigate(`/search?${queryParams}`)
+      console.log(res.data.posts, "searched search")
       setLoading(false)
     } catch (error) {
       console.error(error)
@@ -199,7 +199,7 @@ const Context = (props) => {
 
 
   const values = {
-    change, submit, loading, sort, data, setSort, search, setSearch, searchProperty, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData, isFormReady
+    change, submit, loading, sort, data, setData, setSort, search, setSearch, searchProperty, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData, isFormReady
   }
 
   return (
