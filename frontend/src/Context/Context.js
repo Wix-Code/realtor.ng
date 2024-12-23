@@ -131,7 +131,10 @@ const Context = (props) => {
       /**const queryParams = new URLSearchParams(
         Object.entries(search).filter(([_, value]) => value)
       ).toString()**/
-      const queryParams = new URLSearchParams({ location: search.location }).toString();
+      const queryParams = new URLSearchParams({
+        location: search.location,
+        sort: sort
+      }).toString();
 
       console.log(search, "Search object");
 
@@ -140,8 +143,9 @@ const Context = (props) => {
       const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
         withCredentials: false,
       })
-      setData(res.data.posts)
-      localStorage.setItem('searchedProperties', JSON.stringify(res.data))
+      const searchData = res.data.posts || []
+      setData(searchData)
+      localStorage.setItem('searchParams', queryParams)
       navigate(`/search?${queryParams}`)
       console.log(res.data.posts, "searched search")
       setLoading(false)
@@ -180,8 +184,9 @@ const Context = (props) => {
       if (isFormReady) {
         setLoading(true)
         console.log(queryParams)
-        setData(res.data.posts)
-        localStorage.setItem('searchedProperties', JSON.stringify(res.data))
+        const searchData = res.data.posts || []
+        setData(searchData)
+        localStorage.setItem('searchParams', queryParams)
         navigate(`/search?${queryParams}`)
       } else {
         alert("Please provide at least one filter option.");

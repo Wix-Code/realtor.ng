@@ -3,15 +3,16 @@ import { storeContext } from '../Context/Context'
 import ItemCard from '../pages/ItemCard'
 import './search.css'
 import Divide from '../pages/Divide'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
 
 const Search = () => {
 
-  const { data, setData } = useContext(storeContext)
+  const { data, setData, sort } = useContext(storeContext)
 
   const location = useLocation();
+  const navigate = useNavigate()
 
   /**useEffect(() => {
     const storedProperties = localStorage.getItem('searchedProperties');
@@ -21,10 +22,11 @@ const Search = () => {
     }
   }, []);**/
 
-  useEffect(() => {
+  /**useEffect(() => {
     const fetchData = async () => {
       const searchParams = new URLSearchParams(location.search);
       const queryParams = searchParams.toString();
+
 
       console.log(queryParams, "property")
 
@@ -33,24 +35,75 @@ const Search = () => {
           const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
             withCredentials: false,
           })
-          //const fetchedData = res.data.posts || [];
-          setData(res.data.posts); // Update context or state
-          console.log(res.data, "serached")
-          //localStorage.setItem('searchedProperties', JSON.stringify(fetchedData))
+          const fetchedData = res.data.posts || [];
+          setData(fetchedData); // Update state with fetched data
+          console.log(res.data, "searched");
+          localStorage.setItem('searchedProperties', queryParams); // Save valid data
+
         } catch (error) {
           console.log("Error fetching data:", error);
         }
       } else {
         // Load from localStorage if no queryParams
-        const storedProperties = localStorage.getItem('searchedProperties');
-        if (storedProperties) {
-          setData(JSON.parse(storedProperties));
+        const storedParams = localStorage.getItem('searchParams')
+        if (storedParams) {
+          // Use stored parameters to fetch data
+          const res = await axios.get(
+            `https://back-end-g5hr.onrender.com/api/post/create?${storedParams}`,
+            { withCredentials: false }
+          )
+          setData(res.data.posts || [])
+          // Update URL with stored parameters
+          navigate(`/search?${storedParams}`, { replace: true })
+        } else {
+          setData([])
         }
       }
     };
 
     fetchData();
-  }, [location.search, setData]); // Re-fetch if the URL changes
+  }, [location.search, setData]); // Re-fetch if the URL changes **/
+  useEffect(() => {
+    const fetchData = async () => {
+      // Get current URL parameters
+      const searchParams = new URLSearchParams(location.search)
+      const queryParams = searchParams.toString()
+
+      try {
+        if (queryParams) {
+          // If we have URL parameters, use them
+          const res = await axios.get(
+            `https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`,
+            { withCredentials: false }
+          )
+          setData(res.data.posts || [])
+          // Store the query parameters
+          localStorage.setItem('searchParams', queryParams)
+        } else {
+          // No URL parameters, check localStorage
+          const storedParams = localStorage.getItem('searchParams')
+          if (storedParams) {
+            // Use stored parameters to fetch data
+            const res = await axios.get(
+              `https://back-end-g5hr.onrender.com/api/post/create?${storedParams}`,
+              { withCredentials: false }
+            )
+            setData(res.data.posts || [])
+            // Update URL with stored parameters
+            navigate(`/search?${storedParams}`, { replace: true })
+          } else {
+            setData([])
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+        setData([])
+      }
+    }
+
+    fetchData()
+  }, [location.search, setData])
+
 
   /**  useEffect(() => {
      const savedData = localStorage.getItem('searchedProperties');
