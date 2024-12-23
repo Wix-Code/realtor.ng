@@ -128,9 +128,11 @@ const Context = (props) => {
     e.preventDefault()
     setLoading(true)
     try {
-      const queryParams = new URLSearchParams(
+      /**const queryParams = new URLSearchParams(
         Object.entries(search).filter(([_, value]) => value)
-      ).toString()
+      ).toString()**/
+      const queryParams = new URLSearchParams({ location: search.location }).toString();
+
       console.log(search, "Search object");
 
       console.log(queryParams, "Filtered properties")
@@ -139,7 +141,7 @@ const Context = (props) => {
         withCredentials: false,
       })
       setData(res.data.posts)
-      //localStorage.setItem('searchedProperties', JSON.stringify(res.data))
+      localStorage.setItem('searchedProperties', JSON.stringify(res.data))
       navigate(`/search?${queryParams}`)
       console.log(res.data.posts, "searched search")
       setLoading(false)
