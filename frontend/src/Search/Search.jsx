@@ -40,13 +40,13 @@ const Search = () => {
         } catch (error) {
           console.log("Error fetching data:", error);
         }
-      } /**else {
+      } else {
         // Load from localStorage if no queryParams
         const storedProperties = localStorage.getItem('searchedProperties');
         if (storedProperties) {
           setData(JSON.parse(storedProperties));
         }
-    }**/
+      }
     };
 
     fetchData();

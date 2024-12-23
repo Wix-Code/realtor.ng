@@ -30,8 +30,13 @@ const Context = (props) => {
 
   const [data, setData] = useState([])
   const [sort, setSort] = useState("")
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState({
+    location: ""
+  })
 
+  const searchInput = (e) => {
+    setSearch({ ...search, [e.target.name]: e.target.value })
+  }
   const [post, setPost] = useState(null)
   //const { id } = useParams()
 
@@ -113,7 +118,7 @@ const Context = (props) => {
       }
     }
     fetchData()
-  }, [sort, search])
+  }, [sort])
 
   console.log(data)
 
@@ -126,10 +131,11 @@ const Context = (props) => {
       const queryParams = new URLSearchParams(
         Object.entries(search).filter(([_, value]) => value)
       ).toString()
+      console.log(search, "Search object");
 
       console.log(queryParams, "Filtered properties")
 
-      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?location${search}`, {
+      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
         withCredentials: false,
       })
       setData(res.data.posts)
@@ -173,11 +179,8 @@ const Context = (props) => {
         setLoading(true)
         console.log(queryParams)
         setData(res.data.posts)
-        if (res.data.posts && res.data.posts.length > 0) {
-          navigate(`/search?${queryParams}`)
-        } else {
-          console.log("No property found")
-        }
+        localStorage.setItem('searchedProperties', JSON.stringify(res.data))
+        navigate(`/search?${queryParams}`)
       } else {
         alert("Please provide at least one filter option.");
       }
@@ -199,7 +202,7 @@ const Context = (props) => {
 
 
   const values = {
-    change, submit, loading, sort, data, setData, setSort, search, setSearch, searchProperty, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData, isFormReady
+    change, submit, loading, sort, data, setData, setSort, search, setSearch, searchProperty, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData, isFormReady, searchInput
   }
 
   return (
