@@ -14,6 +14,23 @@ const Search = () => {
 
   const [fit, setFit] = useState([])
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Adjust items per page as needed
+
+  // Calculate total pages
+  const totalPages = Math.ceil(dat.length / itemsPerPage);
+
+  // Paginate data
+  const paginatedData = dat.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Change page
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const location = useLocation();
   const navigate = useNavigate()
 
@@ -108,12 +125,25 @@ const Search = () => {
               <div className="fiter">
                 <div className="prop1">
                   {
-                    dat.map((item) => {
+                    paginatedData.map((item) => {
                       return (
                         <ItemCard item={item} key={item.id} />
                       )
                     })
                   }
+                  <div className="pagination">
+                    {
+                      Array.from({ length: totalPages }, (_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handlePageChange(index + 1)}
+                          className={currentPage === index + 1 ? 'active' : ''}
+                        >
+                          {index + 1}
+                        </button>
+                      ))
+                    }
+                  </div>
                 </div>
                 <Right />
               </div>
