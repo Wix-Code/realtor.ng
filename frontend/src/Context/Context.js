@@ -124,16 +124,16 @@ const Context = (props) => {
 
 
 
-  const searchProperty = async (e) => {
+  /**const searchProperty = async (e) => {
     e.preventDefault()
     setLoading(true)
     try {
       /**const queryParams = new URLSearchParams(
         Object.entries(search).filter(([_, value]) => value)
-      ).toString()**/
+      ).toString()
       const queryParams = new URLSearchParams({
         location: search.location,
-        sort: sort
+        //sort: sort
       }).toString();
 
       console.log(search, "Search object");
@@ -144,16 +144,50 @@ const Context = (props) => {
         withCredentials: false,
       })
       const searchData = res.data.posts || []
-      setData(searchData)
+      setData(searchData, "Filtered Data")
       localStorage.setItem('searchParams', queryParams)
       navigate(`/search?${queryParams}`)
-      console.log(res.data.posts, "searched search")
+      console.log(searchData, "searched search")
       setLoading(false)
     } catch (error) {
       console.error(error)
       setLoading(false)
     }
-  }
+  }**/
+
+  const searchProperty = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const queryParams = new URLSearchParams(
+        Object.entries(search).filter(([_, value]) => value.trim() !== "")
+      ).toString();
+
+      if (!queryParams) {
+        console.warn("No valid search parameters provided.");
+        setData([]);
+        setLoading(false);
+        return;
+      }
+
+      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
+        withCredentials: false,
+      });
+
+      const searchData = res.data.posts || [];
+      setData(searchData);
+
+      localStorage.setItem("lastSearchParams", queryParams);
+      navigate(`/search?${queryParams}`);
+    } catch (error) {
+      console.error("Error fetching properties:", error);
+      setData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   const setChangeFilter = (e) => {
     setFilter((prev) => ({ ...prev, [e.target.name]: e.target.value }))

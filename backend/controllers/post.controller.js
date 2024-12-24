@@ -33,6 +33,8 @@ export const getUserPosts = async (req, res, next) => {
 
 export const getAllPosts = async (req, res) => {
   const { cat, location, bathroom, bedroom, sort, type, furnish } = req.query;
+
+  console.log(req.query, "queery")
   try {
 
     //LIMIT

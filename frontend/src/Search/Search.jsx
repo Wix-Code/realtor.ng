@@ -63,46 +63,38 @@ const Search = () => {
 
     fetchData();
   }, [location.search, setData]); // Re-fetch if the URL changes **/
+
   useEffect(() => {
     const fetchData = async () => {
-      // Get current URL parameters
-      const searchParams = new URLSearchParams(location.search)
-      const queryParams = searchParams.toString()
+      let queryParams = new URLSearchParams(location.search).toString();
+      if (!queryParams) {
+        const storedParams = localStorage.getItem("lastSearchParams");
+        if (storedParams) {
+          queryParams = storedParams;
+          console.log("Using stored query parameters:", queryParams);
+        } else {
+          console.warn("No query parameters or stored data available.");
+          setData([]);
+          return; // Prevent unnecessary API call
+        }
+      }
 
       try {
-        if (queryParams) {
-          // If we have URL parameters, use them
-          const res = await axios.get(
-            `https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`,
-            { withCredentials: false }
-          )
-          setData(res.data.posts || [])
-          // Store the query parameters
-          localStorage.setItem('searchParams', queryParams)
-        } else {
-          // No URL parameters, check localStorage
-          const storedParams = localStorage.getItem('searchParams')
-          if (storedParams) {
-            // Use stored parameters to fetch data
-            const res = await axios.get(
-              `https://back-end-g5hr.onrender.com/api/post/create?${storedParams}`,
-              { withCredentials: false }
-            )
-            setData(res.data.posts || [])
-            // Update URL with stored parameters
-            navigate(`/search?${storedParams}`, { replace: true })
-          } else {
-            setData([])
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error)
-        setData([])
-      }
-    }
+        const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
+          withCredentials: false,
+        });
 
-    fetchData()
-  }, [location.search, setData])
+        const fetchedData = res.data.posts || [];
+        setData(fetchedData);
+        localStorage.setItem("searchedProperties", JSON.stringify(fetchedData));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setData([]);
+      }
+    };
+
+    fetchData();
+  }, [location.search]);
 
 
   /**  useEffect(() => {
