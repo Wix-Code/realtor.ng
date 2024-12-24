@@ -32,10 +32,13 @@ export const getUserPosts = async (req, res, next) => {
 }
 
 export const getAllPosts = async (req, res) => {
-  const { cat, location, bathroom, bedroom, sort, type, furnish } = req.query;
 
-  console.log(req.query, "queery")
+  //console.log(location, "queery")
+  console.log("Received Query Parameters:", req.query);
+
   try {
+    const { cat, location, bathroom, bedroom, sort, type, furnish } = req.query;
+
 
     //LIMIT
 
@@ -136,14 +139,21 @@ export const getAllPosts = async (req, res) => {
       sortOptions.createdAt = 1
     };
 
+    console.log(filter, "filter")
+
+
     // Default to sorting by most recent if no sort option is specified
     if (!Object.keys(sortOptions).length) {
       sortOptions.createdAt = -1;
     }
 
     const posts = await Post.find(filter).sort(sortOptions).populate('userId').lean()
+    console.log(posts, "posts")
 
-    return res.status(200).json({ success: true, message: "posts fetched", posts: posts });
+    res.status(200).json({ success: true, message: "posts fetched", posts: posts });
+    console.log(posts, "posts")
+    return;
+
   } catch (error) {
     res.status(400).json({ success: false, message: "Error fetching all posts", error: error })
     console.log(error)

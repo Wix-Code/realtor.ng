@@ -6,10 +6,13 @@ import Divide from '../pages/Divide'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
+import Right from '../pages/Right'
 
 const Search = () => {
 
-  const { data, setData, sort } = useContext(storeContext)
+  const { dat, setDat, sort } = useContext(storeContext)
+
+  const [fit, setFit] = useState([])
 
   const location = useLocation();
   const navigate = useNavigate()
@@ -22,52 +25,30 @@ const Search = () => {
     }
   }, []);**/
 
-  /**useEffect(() => {
-    const fetchData = async () => {
-      const searchParams = new URLSearchParams(location.search);
-      const queryParams = searchParams.toString();
+  const fetchData = async () => {
 
+    const searchParams = new URLSearchParams(location.search);
+    let queryParams = searchParams.toString();  // Get query string from the URL
 
-      console.log(queryParams, "property")
+    const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`);
+    const fetchedData = res.data.posts;
 
-      if (queryParams) {
-        try {
-          const res = await axios.get(`https://back-end-g5hr.onrender.com/api/post/create?${queryParams}`, {
-            withCredentials: false,
-          })
-          const fetchedData = res.data.posts || [];
-          setData(fetchedData); // Update state with fetched data
-          console.log(res.data, "searched");
-          localStorage.setItem('searchedProperties', queryParams); // Save valid data
+    setDat(fetchedData || []);
+    //console.log(fetchedData, "Fetch me")
 
-        } catch (error) {
-          console.log("Error fetching data:", error);
-        }
-      } else {
-        // Load from localStorage if no queryParams
-        const storedParams = localStorage.getItem('searchParams')
-        if (storedParams) {
-          // Use stored parameters to fetch data
-          const res = await axios.get(
-            `https://back-end-g5hr.onrender.com/api/post/create?${storedParams}`,
-            { withCredentials: false }
-          )
-          setData(res.data.posts || [])
-          // Update URL with stored parameters
-          navigate(`/search?${storedParams}`, { replace: true })
-        } else {
-          setData([])
-        }
-      }
-    };
+    console.log(fetchedData, "data of properties")
 
-    fetchData();
-  }, [location.search, setData]); // Re-fetch if the URL changes **/
+  };
 
   useEffect(() => {
+    fetchData();
+  }, [location.search, setDat]);  // Re-run when the URL search params change
+
+  console.log("Come to me")
+  /**useEffect(() => {
     const fetchData = async () => {
       let queryParams = new URLSearchParams(location.search).toString();
-      if (!queryParams) {
+      if (queryParams) {
         const storedParams = localStorage.getItem("lastSearchParams");
         if (storedParams) {
           queryParams = storedParams;
@@ -75,6 +56,7 @@ const Search = () => {
         } else {
           console.warn("No query parameters or stored data available.");
           setData([]);
+          queryParams = storedParams;
           return; // Prevent unnecessary API call
         }
       }
@@ -94,7 +76,7 @@ const Search = () => {
     };
 
     fetchData();
-  }, [location.search]);
+  }, [location.search]);**/
 
 
   /**  useEffect(() => {
@@ -120,10 +102,21 @@ const Search = () => {
 
       <div className="searched">
         {
-          data.length > 0 ? (
+          dat.length > 0 ? (
             <div className='filt'>
               <h1>Searched Properties</h1>
-              <Divide />
+              <div className="fiter">
+                <div className="prop1">
+                  {
+                    dat.map((item) => {
+                      return (
+                        <ItemCard item={item} key={item.id} />
+                      )
+                    })
+                  }
+                </div>
+                <Right />
+              </div>
             </div>
           ) : (
             <div className='no_property'>

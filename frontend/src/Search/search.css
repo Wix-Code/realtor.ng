@@ -14,6 +14,18 @@
 .filt {
   display: flex;
   flex-direction: column;
+  gap: 40px;
+}
+
+.fiter {
+  display: flex;
+  gap: 20px;
+}
+
+.prop1 {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -51,6 +63,16 @@
   .filt h1,
   .no_property h1 {
     font-size: 18px;
+  }
+
+  .prop1 {
+    margin: 0px 10px;
+  }
+
+  .fiter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
