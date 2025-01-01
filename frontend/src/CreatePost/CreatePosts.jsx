@@ -33,7 +33,7 @@ const CreatePosts = () => {
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
 
-  console.log(data._id, "data id")
+  //console.log(data._id, "data id")
 
   const [loader, setLoader] = useState(true)
 
