@@ -39,7 +39,7 @@ const UpdatePost = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const data = await axios.get(`http://localhost:5000/api/post/single/${id}`)
+      const data = await axios.get(`https://back-end-g5hr.onrender.com/api/post/single/${id}`)
 
       console.log(data.data.posts)
       setPostDetails(data.data.posts)

@@ -7,12 +7,12 @@ const About = () => {
 
   const [loader, setLoader] = useState(true)
 
-  useEffect(() => {
+  /*useEffect(() => {
     setTimeout(() => setLoader(false), 5000)
   }, [])
   if (loader) {
     return <Loader />
-  }
+}*/
   return (
     <div className='about'>
 

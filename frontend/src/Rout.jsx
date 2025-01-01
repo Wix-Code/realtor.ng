@@ -15,22 +15,25 @@ import Search from './Search/Search'
 import Loader from './Loader/Loader'
 
 const Rout = () => {
+
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/properties' element={<Buy />} />
-      <Route path='/about' element={<About />} />
-      <Route path='/contact' element={<Contact />} />
-      <Route path='/:id' element={<Single />} />
-      <Route path='/search' element={<Search />} />
-      <Route path='/lists/:id' element={<UserPosts />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/signin' element={<Login />} />
-      <Route path='/signout' element={<Logout />} />
-      <Route path='/create' element={<CreatePosts />} />
-      <Route path='/update/:id' element={<UpdatePost />} />
-      <Route />
-    </Routes>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/properties' element={<Buy />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/:id' element={<Single />} />
+        <Route path='/search' element={<Search />} />
+        <Route path='/lists/:id' element={<UserPosts />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/signin' element={<Login />} />
+        <Route path='/signout' element={<Logout />} />
+        <Route path='/create' element={<CreatePosts />} />
+        <Route path='/update/:id' element={<UpdatePost />} />
+        <Route />
+      </Routes>
+    </Suspense>
   )
 }
 
