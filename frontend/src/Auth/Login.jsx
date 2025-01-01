@@ -9,14 +9,14 @@ import Loader from '../Loader/Loader'
 const Login = () => {
 
   const { submit, change, error, loading } = useContext(storeContext)
-  const [loader, setLoader] = useState(true)
+  /*const [loader, setLoader] = useState(true)
 
   useEffect(() => {
     setTimeout(() => setLoader(false), 5000)
   }, [])
   if (loader) {
     return <Loader />
-  }
+  }*/
 
   return (
     <div className='register'>
