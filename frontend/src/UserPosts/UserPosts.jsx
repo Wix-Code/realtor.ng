@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './userposts.css'
 import ItemCard from '../pages/ItemCard'
 import { FaRegEdit } from 'react-icons/fa'
 import Loader from '../Loader/Loader'
+import upload from '../utils/upload'
 
 const UserPosts = () => {
   const { id } = useParams()
@@ -13,10 +14,48 @@ const UserPosts = () => {
   const [userDetail, setUserDetail] = useState(null)
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
+  const [openEdit, setOpenEdit] = useState(false)
+  const [img, setImg] = useState(null)
+  const navigate = useNavigate()
 
-  // console.log(data._id, "data me")
+  console.log(data._id, "data me")
   //console.log(user, "user info me")
 
+  const [userDetails, setUserDetails] = useState({
+    userimg: '',
+    username: '',
+    email: '',
+  })
+
+  const change = (e) => {
+    setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
+  }
+
+  const updateUser = async (e) => {
+    e.preventDefault()
+    //setLoading(true)
+    const url = await upload(img)
+    const updatedDetails = Object.fromEntries(
+      Object.entries({ ...userDetails, userimg: url }).filter(([_, value]) => value)
+    );
+
+
+
+    const token = localStorage.getItem('token');
+
+    const res = await axios.post(`https://back-end-g5hr.onrender.com/api/user/update/${data._id}`, updatedDetails, {
+      headers: {
+        Authorization: `Bearer ${token}`,  // Pass token in the Authorization header
+      }
+      , withCredentials: true
+    })
+    if (res) {
+      setOpenEdit(false)
+    }
+
+    console.log(res.data)
+    //setLoading(false)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +87,35 @@ const UserPosts = () => {
   return (
     <div className='userposts'>
       <div className="userposts_col">
+        <div className="open_edit">
+          {
+            openEdit && (
+              <div className="open_d">
+                <div className="open_inp">
+                  <div className="open_img">
+                    <img src="http://res.cloudinary.com/devkpaapb/image/upload/v1735796804/eoktdtp4ajevysocayi5.jpg" alt="" />
+                    <label htmlFor="image" style={{ textAlign: "center" }}>Update Profile Pic</label>
+                    <input type="file" id='image' name="userimg" style={{ display: "none" }} onChange={(e) => setImg(e.target.files[0])} />
+                  </div>
+                  <div className="open_div">
+                    <label htmlFor="">Username</label>
+                    <input type="text" name='username' onChange={change} placeholder='Username' />
+                  </div>
+                  <div className="open_div">
+                    <label htmlFor="">Email</label>
+                    <input type="email" name='email' onChange={change} placeholder='Email' />
+                  </div>
+                  <div className="open_btn">
+                    <button onClick={updateUser}>Update</button>
+                  </div>
+                  <div className="open_close">
+                    <p onClick={() => setOpenEdit(false)}>X</p>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+        </div>
         <div>
           {
             userDetail && <div className='userdetails'>
@@ -57,7 +125,7 @@ const UserPosts = () => {
               {
                 data._id && userDetail?._id && data._id === userDetail._id &&
                 <div className="editprofile">
-                  <button> <FaRegEdit /></button>
+                  <button onClick={() => setOpenEdit(!openEdit)}> <FaRegEdit /></button>
                   <span>Edit your profile</span>
                 </div>
               }

@@ -1,6 +1,9 @@
 import User from "../models/user.model.js";
 
 export const updateUser = async (req, res, next) => {
+
+  const { email, password, ...updateFields } = req.body
+
   if (req.user.id !== req.params.id) {
     return res.status(401).json({ success: false, message: "You can only update your account only." })
   }
@@ -8,7 +11,7 @@ export const updateUser = async (req, res, next) => {
     if (req.body.password) {
       req.body.password = bcrypt.hashSync(req.body.password, 10);
     }
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, { $set: updateFields }, { new: true, runValidators: true });
 
     const { password, ...info } = updatedUser._doc
 

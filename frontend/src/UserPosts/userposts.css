@@ -1,6 +1,7 @@
 .userposts {
   max-width: 1000px;
   margin: auto;
+  position: relative;
 }
 
 .user_posts {
@@ -77,6 +78,7 @@
   background: #e23c3c;
   width: 30px;
   height: 30px;
+  cursor: pointer;
   color: #ffffff;
   font-size: 18px;
 }
@@ -90,6 +92,111 @@
 .userdetails a {
   color: #666;
   font-size: 18px;
+}
+
+.open_d {
+  position: fixed;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 999;
+  color: #ffffff;
+  background: #6666662a;
+}
+
+.open_inp {
+  width: 400px;
+  padding: 20px;
+  background: #ffffff;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.open_close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #ffffff;
+}
+
+.open_close p {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  border-radius: 50%;
+  border: 1px solid #e23c3c;
+  cursor: pointer;
+  color: #e23c3c;
+  align-items: center;
+  transition: all 0.5s;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.open_div {
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 17px;
+}
+
+.open_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  color: #666;
+}
+
+.open_img img {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  object-fit: cover;
+}
+
+.open_img label {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.open_div input {
+  width: 100%;
+  font-size: 17px;
+  border: 1px solid #e23c3c;
+  padding: 8px 5px;
+}
+
+.open_btn {
+  display: flex;
+  justify-content: center;
+}
+
+.open_btn button {
+  background: #ffffff;
+  color: #e23c3c;
+  border: 1px solid #e23c3c;
+  font-size: 17px;
+  border-radius: 30px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.open_btn button:hover,
+.open_close p:hover {
+  background: #e23c3c;
+  color: #ffffff;
+  border: 1px solid #fff8f8;
 }
 
 @media screen and (max-width : 700px) {
