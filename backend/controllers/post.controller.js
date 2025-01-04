@@ -33,7 +33,6 @@ export const getUserPosts = async (req, res, next) => {
 
 export const getAllPosts = async (req, res) => {
 
-  //console.log(location, "queery")
   console.log("Received Query Parameters:", req.query);
 
   try {
