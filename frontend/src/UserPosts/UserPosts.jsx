@@ -16,12 +16,12 @@ const UserPosts = () => {
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
   const [openEdit, setOpenEdit] = useState(false)
-  const [img, setImg] = useState(null)
+  //const [img, setImg] = useState(null)
   const [loader, setLoader] = useState(true)
   const navigate = useNavigate()
   //const { userDetails, change } = useContext(storeContext)
 
-  console.log(data._id, "data me")
+  //console.log(data._id, "data me")
   //console.log(user, "user info me")
 
   const [userDetails, setUserDetails] = useState({
@@ -37,9 +37,9 @@ const UserPosts = () => {
   const updateUser = async (e) => {
     e.preventDefault()
     //setLoading(true)
-    const url = await upload(img)
+    //const url = await upload(img)
     const updatedDetails = Object.fromEntries(
-      Object.entries({ ...userDetails, userimg: url }).filter(([_, value]) => value)
+      Object.entries({ ...userDetails }).filter(([_, value]) => value)
     );
 
 
@@ -124,7 +124,7 @@ const UserPosts = () => {
               <h4>{userDetail.username}</h4>
               <a href={`mailto:${userDetail.email}`}>{userDetail.email}</a>
               {
-                data._id && userDetail?._id && data._id === userDetail._id &&
+                data?._id && userDetail?._id && data?._id === userDetail._id &&
                 <div className="editprofile">
                   <button onClick={() => setOpenEdit(!openEdit)}> <FaRegEdit /></button>
                   <span>Edit your profile</span>
