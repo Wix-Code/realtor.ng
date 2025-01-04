@@ -9,8 +9,11 @@ import Loader from '../Loader/Loader'
 const Properties = () => {
 
   const [data, setData] = useState([])
+  const [loader, setLoader] = useState(true)
+
 
   useEffect(() => {
+    setLoader(true)
     const fetchData = async () => {
       try {
         const res = await axios.get('https://back-end-g5hr.onrender.com/api/post/create', {
@@ -22,15 +25,16 @@ const Properties = () => {
         console.error(error)
       }
     }
+    setLoader(false)
+
 
     fetchData()
   }, [])
 
-  const [loader, setLoader] = useState(true)
 
-  useEffect(() => {
+  /*useEffect(() => {
     setTimeout(() => setLoader(false), 3000)
-  }, [])
+  }, [])*/
   if (loader) {
     return <Loader />
   }
