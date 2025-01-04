@@ -46,7 +46,7 @@ const CreatePosts = () => {
   })
 
   useEffect(() => {
-    setTimeout(() => setLoader(false), 6000)
+    setTimeout(() => setLoader(false), 3000)
   }, [])
   if (loader) {
     return <Loader />

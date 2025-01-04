@@ -120,8 +120,8 @@
 
 .open_close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   color: #ffffff;
 }
 
@@ -202,6 +202,23 @@
 @media screen and (max-width : 700px) {
   .userposts_col {
     margin: 20px 10px;
+  }
+
+  .open_inp {
+    margin: 0px 20px;
+    font-size: 14px;
+  }
+
+  .open_btn button {
+    font-size: 14px;
+  }
+
+  .open_div {
+    font-size: 14px;
+  }
+
+  .open_div input {
+    font-size: 14px;
   }
 
   .userdetails img {

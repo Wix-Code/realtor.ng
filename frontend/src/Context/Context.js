@@ -212,7 +212,7 @@ const Context = (props) => {
 
 
   const values = {
-    change, submit, loading, sort, data, setData, setSort, search, setSearch, searchProperty, dat, setDat, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData, isFormReady, searchInput
+    change, submit, loading, sort, data, setData, setSort, search, setSearch, searchProperty, dat, setDat, filter, setFilter, searchFilter, setChangeFilter, search, post, error, fetchData, isFormReady, searchInput, change, userDetails, setUserDetails
   }
 
   return (
