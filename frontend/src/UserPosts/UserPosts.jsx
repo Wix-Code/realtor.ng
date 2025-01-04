@@ -49,13 +49,32 @@ const UserPosts = () => {
       }
       , withCredentials: true
     })
-    if (res) {
-      setOpenEdit(false)
+    if (res && res.data.success) {
+      // Update local state with the new details
+      fetchUserDetails()
+
+      setOpenEdit(false); // Close the edit modal or dialog
     }
 
     console.log(res.data)
     //setLoading(false)
   }
+
+  const fetchUserDetails = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.get(`https://back-end-g5hr.onrender.com/api/user/${data._id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setUserDetails(res.data);
+    } catch (error) {
+      console.error('Error fetching user details:', error.message);
+    }
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
