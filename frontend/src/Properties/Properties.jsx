@@ -32,9 +32,9 @@ const Properties = () => {
   }, [])
 
 
-  /*useEffect(() => {
+  useEffect(() => {
     setTimeout(() => setLoader(false), 3000)
-  }, [])*/
+  }, [])
   if (loader) {
     return <Loader />
   }
