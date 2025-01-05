@@ -9,9 +9,15 @@ export const verifyToken = (req, res, next) => {
   }
   // Verify token with JWT and continue with next middleware or route
 
-  jwt.verify(token, process.env.JWT, (err, user) => {
-    if (err) return res.status(403).json({ success: false, message: "Invalid token" })
-    req.user = user;
+  try {
+
+    const decode = jwt.verify(token, process.env.JWT)
+    req.user = decode.id;
     next();
-  })
+    console.log(req.user, "req user")
+    console.log(decode, "decode user")
+
+  } catch (error) {
+    res.status(500).send({ success: false, message: "Invalid token or details" })
+  }
 }
