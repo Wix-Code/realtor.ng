@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './createpost.css'
 import axios from 'axios'
 import upload from '../utils/upload'
@@ -6,10 +6,12 @@ import { useNavigate } from 'react-router-dom'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Loader from '../Loader/Loader'
+import { storeContext } from '../Context/Context'
 
 const CreatePosts = () => {
 
   const navigate = useNavigate()
+  const { token } = useContext(storeContext)
 
   const [loading, setLoading] = useState(false)
   const [files, setFiles] = useState(null)
@@ -87,7 +89,7 @@ const CreatePosts = () => {
 
       const res = await axios.post('https://back-end-g5hr.onrender.com/api/post/create', payload, {
         headers: {
-          Authorization: `Bearer ${data._id}`,
+          Authorization: `Bearer ${token}`,
         }, withCredentials: true
       })
       navigate('/')
