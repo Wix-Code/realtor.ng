@@ -31,6 +31,7 @@ const Context = (props) => {
   const [data, setData] = useState([])
   const [dat, setDat] = useState([])
   const [sort, setSort] = useState("")
+  const [token, setToken] = useState("")
   const [search, setSearch] = useState({
     location: ""
   })
@@ -74,7 +75,7 @@ const Context = (props) => {
     try {
       setLoading(true)
       const response = await axios.post('https://back-end-g5hr.onrender.com/api/auth/login', userDetails, { withCredentials: true })
-      console.log("Api data", response.data)
+      console.log("Api data", response)
       /*navigate('/')
       localStorage.setItem('user', JSON.stringify(response.data))
       console.log(response.data)
@@ -82,8 +83,10 @@ const Context = (props) => {
         setError(response.data.message)
         
       }*/
-      if (response.data.success) {
+      if (response.data.token) {
+        setToken(response.data.token)
         localStorage.setItem('user', JSON.stringify(response.data));
+        localStorage.setItem('token', token);
         navigate('/'); // Navigate only on success
       }
       setLoading(false)

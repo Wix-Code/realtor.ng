@@ -49,7 +49,14 @@ export const login = async (req, res) => {
     }
     const { password, ...info } = user._doc
     const token = jwt.sign({ id: user._id }, process.env.JWT, { expiresIn: "7d" });
-    res.cookie("accessToken", token, { httpOnly: true, sameSite: 'None', secure: process.env.NODE_ENV === "production" || false, maxAge: 7 * 24 * 60 * 60 * 1000 }).status(200).send({ success: true, message: "user login successfully", info })
+
+    return res.cookie("accessToken", token,
+      {
+        httpOnly: true, sameSite: 'None',
+        secure: process.env.NODE_ENV === "production" || false,
+        maxAge: 7 * 24 * 60 * 60 * 1000
+      })
+      .status(200).send({ success: true, message: "user login successfully", info, token })
   } catch (error) {
     res.status(400).send({ success: false, message: "Error in logging in", error: error.message });
     console.log(error)
