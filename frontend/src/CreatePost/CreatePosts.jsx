@@ -11,7 +11,7 @@ import { storeContext } from '../Context/Context'
 const CreatePosts = () => {
 
   const navigate = useNavigate()
-  //const { token } = useContext(storeContext)
+  const { token } = useContext(storeContext)
 
   const [loading, setLoading] = useState(false)
   const [files, setFiles] = useState(null)
@@ -34,7 +34,7 @@ const CreatePosts = () => {
 
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
-  const token = localStorage.getItem('token');
+  //const token = localStorage.getItem('token');
 
 
   //console.log(data._id, "data id")
@@ -90,7 +90,9 @@ const CreatePosts = () => {
       console.log(payload, "payload")
 
       const res = await axios.post('https://back-end-g5hr.onrender.com/api/post/create', payload, {
-        withCredentials: true
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }, withCredentials: true
       })
       navigate('/')
       setLoading(false)
