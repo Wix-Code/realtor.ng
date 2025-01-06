@@ -5,7 +5,10 @@ import mongoose from "mongoose";
 
 export const createPost = async (req, res, next) => {
   try {
-    const post = new Post(req.body);
+    const userId = req.user
+    console.log(userId)
+    const { ...others } = req.body
+    const post = new Post({ ...others, userId });
     await post.save();
     res.status(200).json({ success: true, message: "post created successfully", post: post })
 
