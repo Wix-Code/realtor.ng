@@ -32,8 +32,8 @@ const CreatePosts = () => {
     userId: '',
   })
 
-  const user = JSON.parse(localStorage.getItem('user')) || null
-  const data = user?.info
+  //const user = JSON.parse(localStorage.getItem('user')) || null
+  //const data = user?.info
   //const token = localStorage.getItem('token');
 
 
@@ -44,7 +44,7 @@ const CreatePosts = () => {
   console.log(token, "token")
 
   useEffect(() => {
-    if (!data) {
+    if (!token) {
       navigate('/signin')
     }
   })
