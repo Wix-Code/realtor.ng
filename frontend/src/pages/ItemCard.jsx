@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './pages.css'
 import { FaBath, FaBed, FaPhoneAlt, FaRegEdit } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
@@ -6,9 +6,11 @@ import { IoCameraOutline } from 'react-icons/io5'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { MdDelete } from 'react-icons/md'
 import axios from 'axios'
+import { storeContext } from '../Context/Context'
 
 const ItemCard = ({ item }) => {
   const navigate = useNavigate()
+  const { token } = useContext(storeContext)
 
 
   const user = JSON.parse(localStorage.getItem('user')) || null;
@@ -23,7 +25,7 @@ const ItemCard = ({ item }) => {
   } */
 
   //const { id } = useParams()
-  const token = localStorage.getItem('token');
+  //const token = localStorage.getItem('token');
 
   console.log(token, "token is here")
 
@@ -34,7 +36,7 @@ const ItemCard = ({ item }) => {
     try {
       await axios.delete(`https://back-end-g5hr.onrender.com/api/post/delete/${item._id}`, {
         headers: {
-          Authorization: `Bearer ${data._id}`
+          Authorization: `Bearer ${token}`
         }, withCredentials: true,
       })
       navigate('/')
