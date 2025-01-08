@@ -84,7 +84,7 @@ const CreatePosts = () => {
       const payload = {
         ...postDetails,
         img: urls,
-        //userId: data._id
+        userId: data._id
       }
 
       console.log(payload, "payload")
