@@ -183,15 +183,22 @@ export const getSinglePosts = async (req, res, next) => {
 
 export const deleteUserPosts = async (req, res, next) => {
 
-  const posts = await Post.findById(req.params.id);
+  console.log("user")
+  const user = req.user;
+  const { id } = req.params;
+
+  const posts = await Post.findById(id);
+
   if (!posts) {
     return res.status(404).json({ success: false, message: "Post not found" })
   }
-  if (String(req.user.id) !== String(posts.userId)) {
-    return res.status(401).json({ success: false, message: "You can only delete your own post" })
+  console.log(posts, "posts")
+
+  if (String(user) !== String(posts.userId)) {
+    return res.status(401).json({ success: false, message: "You can only del your own post" })
   }
   try {
-    await Post.findByIdAndDelete(req.params.id);
+    await Post.findByIdAndDelete(id);
     res.status(200).json({ success: true, message: "post deleted successfully" })
 
   } catch (error) {

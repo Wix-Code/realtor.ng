@@ -24,12 +24,14 @@ export const updateUser = async (req, res, next) => {
 }
 
 export const deleteUser = async (req, res) => {
+
+  const user = req.user
   try {
-    if (req.user.id !== req.params.id) {
-      return res.status(401).json({ success: false, message: "You can only delete your account only." })
+    if (user !== req.params.id) {
+      return res.status(401).json({ success: false, message: "You can only  your account only." })
     }
 
-    const deleteUser = await User.findByIdAndDelete(req.user.id)
+    const deleteUser = await User.findByIdAndDelete(user)
     res.clearCookie("accessToken");
     res.status(200).json({ success: true, message: "User deleted successfully", deleteUser });
 
