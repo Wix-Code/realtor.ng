@@ -29,11 +29,11 @@ const CreatePosts = () => {
     type: '',
     bathroom: '',
     img: [],
-    userId: '',
+    //userId: '',
   })
 
-  const user = JSON.parse(localStorage.getItem('user')) || null
-  const data = user?.info
+  //const user = JSON.parse(localStorage.getItem('user')) || null
+  //const data = user?.info
   //const token = localStorage.getItem('token');
 
 
@@ -84,7 +84,7 @@ const CreatePosts = () => {
       const payload = {
         ...postDetails,
         img: urls,
-        userId: data._id
+        //userId: data._id
       }
 
       console.log(payload, "payload")
