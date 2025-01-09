@@ -177,7 +177,7 @@ const UpdatePost = () => {
         <div className="create-two">
           <div className="creat">
             <label htmlFor="image">Images</label>
-            <input type="file" multiple onChange={handleFiles} name="img" id="image" />
+            <input type="file" multiple onChange={handleFiles} name="img" id="image" required />
           </div>
           <div className="creat">
             <label htmlFor="">Description</label>

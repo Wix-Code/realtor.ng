@@ -209,12 +209,13 @@ export const deleteUserPosts = async (req, res, next) => {
 
 export const updateUserPost = async (req, res, next) => {
 
+  const user = req.user
   const posts = await Post.findById(req.params.id);
   console.log(posts)
   if (!posts) {
     return res.status(404).json({ success: false, message: "Post not found" })
   }
-  if (req.user.id !== posts.userId.toString()) {
+  if (user !== posts.userId.toString()) {
     return res.status(401).json({ success: false, message: "You can only update your own post" })
   }
   try {
