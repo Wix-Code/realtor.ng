@@ -68,6 +68,14 @@ const CreatePosts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
+
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      console.error("Token is missing. Please log in again.");
+      return;
+    }
+
     const urls = await Promise.all(
       files.map(async (file) => {
         const url = await upload(file);
