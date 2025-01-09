@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader'
 
 const UpdatePost = () => {
 
-  const { loading, setLoading } = useState(false)
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user')) || null
   const data = user?.info
