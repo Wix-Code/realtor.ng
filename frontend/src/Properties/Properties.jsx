@@ -13,7 +13,7 @@ const Properties = () => {
 
 
   useEffect(() => {
-    setLoader(true)
+    //setLoader(true)
     const fetchData = async () => {
       try {
         const res = await axios.get('https://back-end-g5hr.onrender.com/api/post/create', {
@@ -25,7 +25,7 @@ const Properties = () => {
         console.error(error)
       }
     }
-    setLoader(false)
+    //setLoader(false)
 
 
     fetchData()

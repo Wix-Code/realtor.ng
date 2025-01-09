@@ -13,6 +13,7 @@ const CreatePosts = () => {
   const navigate = useNavigate()
   const { token } = useContext(storeContext)
 
+
   const [loading, setLoading] = useState(false)
   const [files, setFiles] = useState(null)
   const [value, setValue] = useState('');

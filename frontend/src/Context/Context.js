@@ -31,7 +31,7 @@ const Context = (props) => {
   const [data, setData] = useState([])
   const [dat, setDat] = useState([])
   const [sort, setSort] = useState("")
-  const [token, setToken] = useState("")
+  //const [token, setToken] = useState("")
   const [search, setSearch] = useState({
     location: ""
   })
@@ -42,7 +42,7 @@ const Context = (props) => {
   const [post, setPost] = useState(null)
   //const { id } = useParams()
 
-  //const user = JSON.parse(localStorage.getItem('user')) || null
+  const token = localStorage.getItem('token')//JSON.parse(localStorage.getItem('token')) || null
   //const data = user?.info
 
 
@@ -84,9 +84,9 @@ const Context = (props) => {
         
       }*/
       if (response.data.token) {
-        setToken(response.data.token)
+        //setToken(response.data.token)
         localStorage.setItem('user', JSON.stringify(response.data));
-        // localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.token);
         navigate('/'); // Navigate only on success
       }
       setLoading(false)

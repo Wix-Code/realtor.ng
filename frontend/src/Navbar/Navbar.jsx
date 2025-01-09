@@ -32,6 +32,7 @@ const Navbar = () => {
     try {
       await axios.post('https://back-end-g5hr.onrender.com/api/auth/logout')
       localStorage.removeItem('user', null)
+      localStorage.removeItem('token', null)
       navigate('/')
       setClick(false)
     } catch (error) {
