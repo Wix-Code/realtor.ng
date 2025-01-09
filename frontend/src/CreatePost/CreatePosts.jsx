@@ -73,6 +73,7 @@ const CreatePosts = () => {
 
     if (!token) {
       console.error("Token is missing. Please log in again.");
+      alert("Token is missing. Please log in again.");
       return;
     }
 

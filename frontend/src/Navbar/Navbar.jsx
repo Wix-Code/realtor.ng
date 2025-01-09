@@ -14,13 +14,13 @@ const Navbar = () => {
   const [click, setClick] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
-  const { post } = useContext(storeContext)
+  const { post, token } = useContext(storeContext)
 
   const { pathname } = location
 
 
 
-  const user = JSON.parse(localStorage.getItem('user')) || null
+  //const user = JSON.parse(localStorage.getItem('user')) || null
   //const data = user?.info
 
 
@@ -63,7 +63,7 @@ const Navbar = () => {
         }
         <div className='nav3'>
           {
-            user ? <li className='li' onClick={signOut}>Sign Out</li> :
+            token ? <li className='li' onClick={signOut}>Sign Out</li> :
               <ul>
                 {
                   Sign.map((link) => {
