@@ -42,7 +42,7 @@ const Latest = () => {
                     </div>
                     <div className="late_desc">
                       <h2>{item.type}</h2>
-                      <p>{item.description}</p>
+                      <p>{item.description.slice(0, 120)}...</p>
                       <hr />
                       <h3>&#8358;{item.price}</h3>
                     </div>

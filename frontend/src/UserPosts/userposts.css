@@ -56,6 +56,12 @@
   padding: 20px 0px;
 }
 
+.post_data {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .userdetails img {
   width: 200px;
   height: 200px;
