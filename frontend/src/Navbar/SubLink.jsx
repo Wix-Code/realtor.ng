@@ -25,7 +25,7 @@ const SubLink = ({ setOpen, pathname }) => {
       ? [] // If token exists, hide Sign In and Sign Up
       : [
         { name: 'Sign In', path: '/signin' },
-        { name: 'Sign Up', path: '/signup' },
+        { name: 'Sign Up', path: '/register' },
       ]),
     {
       path: '/create',
