@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 const Latest = () => {
   const [data, setData] = useState([])
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,7 +45,7 @@ const Latest = () => {
                       <h2>{item.type}</h2>
                       <p>{item.description.slice(0, 120)}...</p>
                       <hr />
-                      <h3>&#8358;{item.price}</h3>
+                      <h3>&#8358;{new Intl.NumberFormat('en-US').format(item.price)}</h3>
                     </div>
                   </div>
                   <div className="late_icon">

@@ -92,7 +92,7 @@ const SubLeft = () => {
       </div>
       <div className="bedroom">
         <h2>{post?.title}</h2>
-        <h1>&#8358;{post?.price}</h1>
+        <h1>&#8358;{new Intl.NumberFormat('en-US').format(post?.price)}</h1>
       </div>
       <div className="cat_cat">
         <div className="gra">

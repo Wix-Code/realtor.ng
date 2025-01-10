@@ -86,7 +86,7 @@ const ItemCard = ({ item }) => {
           <Link to={`/${item._id}`}><button>More details</button></Link>
           <hr />
           <div className="item">
-            <h2>&#8358;{item.price}</h2>
+            <h2>&#8358;{new Intl.NumberFormat('en-US').format(item.price)}</h2>
             <div className="item_no">
               <span>{item?.userId?.username}</span>
               <div className="item_ph">
